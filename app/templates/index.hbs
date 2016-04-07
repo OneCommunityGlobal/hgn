@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+    <div class="col-md-3" >
+      {{hgn-profilebox title="Lokesh Gopu" role="Administrator" logo="http://www.nitwaa.in/media/1/profile_pictures/naga-rama-lokesh-gopu/naga-rama-lokesh-gopu-present.jpg"}}
+    </div>
+    <div class="col-md-9">
+      <div class="col-md-6" >
+        <div class="panel panel-default" style="height:350px;background-color:#CC7272;text-align:center">
+          <div class="panel-heading" style="background-color:#B14E4E">Hours Worked this week</div>
+          <div class="panel-body" >
+              {{ember-chart type='Pie' options=model.weekData.chartOptions data=model.weekData.chartData width=200 height=200 legend=true}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default" style="height:350px;background-color:#D9CC6C;text-align:center">
+          <div class="panel-heading" style="background-color:#A79B49">Leaderboard</div>
+          <div class="panel-body">
+
+            {{hgn-tabs}}
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-default" style="height:350px;background-color:#A9D96C;text-align:center">
+          <div class="panel-heading" style="background-color:#7AA243">Hours Worked this month (Projects)</div>
+          <div class="panel-body">
+            {{ember-chart type='Bar' options=model.monthData.chartOptions data=model.monthData.chartData width=300 height=250 legend=true}}
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>
+{{outlet}}
