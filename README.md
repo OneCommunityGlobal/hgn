@@ -1,7 +1,6 @@
 # Hgnapp
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+![alt tag](http://s21.postimg.org/rxndk6dh3/Screen_Shot_2016_04_08_at_12_16_12_AM.png)
 
 ## Prerequisites
 
