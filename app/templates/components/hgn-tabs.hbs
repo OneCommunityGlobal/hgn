@@ -18,22 +18,76 @@
     <label for="tab4">
         <i class="fa fa-code"></i><span>All Time</span>
     </label>
-    <div id="tab-content1" class="tab-content">
-        <h3>hi</h3>
-        <p><!-- Tab content here --></p>
-    </div> <!-- #tab-content1 -->
-    <div id="tab-content2" class="tab-content">
-        <h3>hii</h3>
-        <p><!-- Tab content here --></p>
-    </div> <!-- #tab-content2 -->
-    <div id="tab-content3" class="tab-content">
-        <h3><!-- Tab title here --></h3>
-        <p><!-- Tab content here --></p>
-    </div> <!-- #tab-content3 -->
-    <div id="tab-content4" class="tab-content">
-        <h3><!-- Tab title here --></h3>
-        <p><!-- Tab content here --></p>
-    </div> <!-- #tab-content3 -->
+    <div id="tab-content1" class="tab-content" style="height:250px; overflow:scroll;">
+      <table class="table table-hover">
+        {{#each model.dayData as |person|}}
+        <tr>
+            <td>
+                {{person.rank}}.
+            </td>
+            <td>
+                {{person.name}}
+            </td>
+            <td>
+                {{person.hours}}
+            </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    <div id="tab-content2" class="tab-content" style="height:250px; overflow:scroll;">
+      <table class="table table-hover">
+        {{#each model.dayData as |person|}}
+        <tr>
+            <td>
+                {{person.rank}}.
+            </td>
+            <td>
+                {{person.name}}
+            </td>
+            <td>
+                {{person.hours}}
+            </td>
+        </tr>
+        {{/each}}
+      </table>
+
+    </div>
+    <div id="tab-content3" class="tab-content" style="height:250px; overflow:scroll;">
+      <table class="table table-hover">
+        {{#each model.dayData as |person|}}
+        <tr>
+            <td>
+                {{person.rank}}.
+            </td>
+            <td>
+                {{person.name}}
+            </td>
+            <td>
+                {{person.hours}}
+            </td>
+        </tr>
+        {{/each}}
+      </table>
+
+    </div>
+    <div id="tab-content4" class="tab-content" style="height:250px; overflow:scroll;">
+      <table class="table table-hover">
+        {{#each model.dayData as |person|}}
+        <tr>
+            <td>
+                {{person.rank}}.
+            </td>
+            <td>
+                {{person.name}}
+            </td>
+            <td>
+                {{person.hours}}
+            </td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
 </div>
 
 <style>
@@ -83,10 +137,24 @@
     color:grey;
     width: 100%;
     float: left;
-    padding: 15px;
     box-sizing: border-box;
     background-color:#ffffff;
 }
+
+.tab-content .table{
+  margin-bottom: 0px;
+  font-size: 16px;
+  text-align: left;
+}
+
+.tab-content .table td{
+  padding: 5px;
+}
+
+.tab-content .table tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
 .tabs [id^="tab"]:checked + label {
   background: #E06739;
   /* box-shadow: inset 0 4px #3498db; */
