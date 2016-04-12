@@ -1,6 +1,6 @@
 # Hgnapp
 
-![alt tag](http://s23.postimg.org/na9x8ymxn/Screen_Shot_2016_04_12_at_3_23_37_AM.png)
+![alt tag](http://s16.postimg.org/rl1gcls6d/Screen_Shot_2016_04_12_at_3_37_18_AM.png)
 
 ## Prerequisites
 
