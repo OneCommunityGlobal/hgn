@@ -18,6 +18,9 @@
     <button id="timerButtonReset" disabled="{{stopDisabled}}" {{action "resetTimer"}}><span class="glyphicon glyphicon-eject" aria-hidden="true"></span> Reset </button>
 
   </div>
+  <div>
+    <button id="addTimeToTask">Add Time to Task</button>
+  </div>
 </div>
 
 {{yield}}
@@ -37,9 +40,16 @@
     color: black;
     height: 50px;
     width: 85px;
+    cursor: pointer;
     margin: 4px;
     font-size: 17px;
     background-color: #FFAC66;
+  }
+  .task-timer #addTimeToTask{
+    width: 170px;
+    background-color: #20A272;
+    color: #ECECEC;
+    margin: 21px;
   }
   .task-timer button:disabled{
     background-color: grey;
