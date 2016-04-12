@@ -1,0 +1,12 @@
+
+{{iso}}
+<button id="timerButton" {{action "timerAction"}}>{{actionText}} </button>
+<button id="timerButtonStop" disabled="{{stopDisabled}}" {{action "stopTimer"}}>Stop </button>
+<button id="timerButtonReset" disabled="{{stopDisabled}}" {{action "resetTimer"}}>Reset </button>
+
+{{yield}}
+<style>
+  button{
+    color:black;
+  }
+</style>
