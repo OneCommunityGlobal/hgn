@@ -14,14 +14,25 @@
   <div>
 
     <button id="timerButton" {{action "timerAction"}}><span class="glyphicon glyphicon-{{actionIcon}}" aria-hidden="true"></span> {{actionText}} </button>
-    <button id="timerButtonStop" disabled="{{stopDisabled}}" {{action "stopTimer"}}><span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop </button>
     <button id="timerButtonReset" disabled="{{stopDisabled}}" {{action "resetTimer"}}><span class="glyphicon glyphicon-eject" aria-hidden="true"></span> Reset </button>
 
   </div>
   <div>
-    <button id="addTimeToTask">Add Time to Task</button>
+
+    <div class="row">
+       <div class="col-md-12">
+           <button type="submit" id="addTimeToTask" type="button" class="btn btn-large btn-primary" {{action "toggleShow"}}>Add time to task</button>
+
+           {{#ember-wormhole to="destination"}}
+             {{hgn-model isVisible=showMyModal}}
+           {{/ember-wormhole}}
+
+       </div>
+    </div>
   </div>
 </div>
+
+
 
 {{yield}}
 <style>

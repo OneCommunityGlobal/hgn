@@ -14,13 +14,6 @@ export default Clock.extend({
     this.setProperties({second: 0, minute: 0, five: 0, quarter: 0, hour: 0});
   },
 
-  intervalChange: Ember.observer('intervalTime', function() {
-    if (Ember.testing) {
-      this.set('interval', this.get('intervalTime'));
-      return this.reset();
-    }
-    throw Error('The clock interval cannot be changed except during testing');
-  }),
 
   timeChange: Ember.observer('time', function() {
     this.tick();
@@ -31,7 +24,7 @@ export default Clock.extend({
 
     if (second && (second % 60) === 0) {
       var minute = this.incrementProperty('minute');
-      this.setProperties({second: 0})
+      this.setProperties({second: 0});
 
       if (minute !== 0) {
         if ((minute % 5) === 0) {
@@ -44,7 +37,7 @@ export default Clock.extend({
 
         if ((minute % 60) === 0) {
           this.incrementProperty('hour');
-          this.setProperties({minute: 0})
+          this.setProperties({minute: 0});
         }
       }
     }

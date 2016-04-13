@@ -1,11 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  showMyModal: false,
+
   clock: Ember.inject.service('hgn-clock'),
   seconds: Ember.computed('clock.second', function() {
       var second = this.get('clock.second');
       if(second<10)
-        second = "0"+second;
+        second = "0" + second;
       return second;
   }),
   minutes: Ember.computed('clock.second', function() {
@@ -31,12 +33,12 @@ export default Ember.Component.extend({
   actionIcon : "play",
   actions: {
         timerAction: function() {
-            if(this.get('status') == 0)
+            if(this.get('status') === 0)
             {
               this.get('clock').start();
-              this.setProperties({status:1, actionText: "Pause",actionIcon:"pause", stopDisabled:""});
+              this.setProperties({status:1, actionText: "Stop",actionIcon:"stop", stopDisabled:""});
             }
-            else if(this.get('status') == 1)
+            else if(this.get('status') === 1)
             {
               this.get('clock').stop();
               this.setProperties({status:0, actionText: "Start", actionIcon:"play"});
@@ -49,9 +51,9 @@ export default Ember.Component.extend({
             this.setProperties({status:0, actionText: "Start",actionIcon:"play", stopDisabled:"disabled"});
 
         },
-        stopTimer: function()
-        {
-
+        toggleShow() {
+            this.set('showMyModal', !this.get('showMyModal'));
         }
+
       }
 });
