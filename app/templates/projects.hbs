@@ -1,3 +1,36 @@
+<div class="project-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
+            <div class="panel-heading" style="background-color:#4E5D6C">Project List</div>
+            <div class="panel-body" style="padding:0px" >
+                {{project-list model=model.projectsData}}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" >
+          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
+            <div class="panel-heading" style="background-color:#4E5D6C">Task List  </div>
+            <div class="panel-body" style="padding:0px;overflow:scroll;height:600px" >
+                {{task-list model=model.projectsData}}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
+            <div class="panel-heading" style="background-color:#4E5D6C">Task Updates</div>
+            <div class="panel-body" style="padding:10px;overflow:scroll;height:600px" >
+                {{task-progress model=model.projectsData}}
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 
-
-{{outlet}}
+<style>
+  .project-page{
+    font-size:13px;
+  }
+</style>

@@ -1,0 +1,60 @@
+{{yield}}
+
+
+{{#each model.projectList as |project|}}
+<div class="bubble">
+
+  <div class="name"> Lokesh Gopu</div>
+  <hr> Worked on the project page especially to display the updates of the project on one of the columns. Also added the timestamp information of task
+<hr>
+
+<div class="time ui-btn ui-icon-clock ui-btn-icon-left">Time Worked: 4h 30m </div><span class="timestamp"> 06/01/206 6:00 PM PST </span>
+</div>
+{{/each}}
+
+
+
+
+
+<style>
+
+  .name {
+    font-weight: bold;
+    text-align: left;
+  }
+  .center-text{
+    color:grey;
+    text-shadow: 1px 1px 5px grey;
+  }
+
+  .timestamp{
+    text-align: right;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 10px;
+  }
+
+  .time{
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  .bubble {
+  position: relative;
+ margin-top: 10px;
+  padding: 4px;
+  background: #8A8A8A;
+  border: #bfbfbf solid 2px;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 2px 15px 0px #616161;
+  -moz-box-shadow: 1px 2px 15px 0px #616161;
+  box-shadow: 1px 2px 15px 0px #616161;
+}
+
+
+
+</style>
+{{yield}}

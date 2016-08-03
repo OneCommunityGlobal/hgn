@@ -1,0 +1,42 @@
+
+
+{{#each model.taskList as |project|}}
+  <div class="listItem" id="project{{project.id}}">
+    {{project.name}}
+    <div class="hours">Hours: 76 </div>
+  </div>
+{{/each}}
+
+<style>
+.listItem{
+  text-align: left;
+  cursor: pointer;
+  color:white;
+  padding:10px;
+  border-style: solid;
+    border-width: 1px 0px;
+}
+
+.hours{
+  font-size: 8px;
+  color:grey;
+  
+}
+
+.listItem-selected{
+  text-align: left;
+  cursor: pointer;
+  color:white;
+  padding:10px;
+  background-color: #5590CC;
+  border-top: 2px ;
+
+}
+
+.listItem:hover{
+  background-color: #5590CC;
+  color: white;
+}
+
+
+</style>
