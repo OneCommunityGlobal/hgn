@@ -1,0 +1,17 @@
+.profile{
+  background-color: #9acfea;
+  border: 2px solid green;
+  min-height: 500px;
+}
+.bio{
+  background-color: #00b3ee;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/*Header styles*/
+.badge-notify {
+  position: relative;
+  /*top: 10px;*/
+  left:-10px;
+}

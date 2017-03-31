@@ -1,0 +1,70 @@
+{{outlet}}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="col-md-12">
+      {{hgn-notifications model=model.TimeLogData}}
+      </div>
+      <div class="col-md-12">
+        <div class="panel panel-default" style="max-height:175px; min-height: 175px; overflow:y;">
+          <div class="panel-heading">Action Items <span style="float:right;">No.of hours Commited Weekly:10</span></div>
+          <div class="panel-body" >
+            <!-- To populate-->
+            {{#each model.TimeLogData.ActionItems as |ActionItem|}}
+              <div> {{ActionItem.ActionItem}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="panel">
+        <button type="submit" id="addTimeToTask" type="button" class="btn btn-large btn-primary" {{action "toggleShow"}}>Add time to task</button>
+
+        {{#ember-wormhole to="destination"}}
+          {{hgn-model isVisible=showMyModal}}
+        {{/ember-wormhole}}
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="panel panel-default" style="min-height: 350px">
+          <div class="panel-heading">Contributions So Far</div>
+          <div class="panel-body">
+            <!--To BE Done : Weekly updates, formating etc -->
+            <div style="border: solid 1px lightgrey">
+              <h6>Week 1</h6>
+            <div>
+              <span>Total Tangible Time: 5</span>
+              <span style="float:right">Total Intangible Time:1 </span>
+            </div>
+              <hr>
+              <div class="name">UserName</div>
+             <p> Worked on the project page especially to display the updates of the project on one of the columns.
+              Also added the timestamp information of task
+             </p>
+
+              <div class="time ui-btn ui-icon-clock ui-btn-icon-left">Time Worked: 5h  </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default" style="height:350px;background-color:#CC7272;text-align:center">
+        <div class="panel-heading" style="background-color:#B14E4E">Hours Worked this week</div>
+        <div class="panel-body" >
+          {{ember-chart type='Pie' options=model.weekData.chartOptions data=model.weekData.chartData width=200 height=200 legend=true}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default" style="height:350px;background-color:#A9D96C;text-align:center">
+        <div class="panel-heading" style="background-color:#7AA243">Hours Worked this month (Projects)</div>
+        <div class="panel-body">
+          {{ember-chart type='Bar' options=model.monthData.chartOptions data=model.monthData.chartData width=300 height=250 legend=true}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
