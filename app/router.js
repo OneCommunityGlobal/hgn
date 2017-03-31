@@ -9,6 +9,8 @@ Router.map(function() {
   this.route('projects');
   this.route('reports');
   this.route('dashboard');
+  this.route('profilepage');
+  this.route('timelog');
 });
 
 export default Router;

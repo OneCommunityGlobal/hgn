@@ -1,0 +1,13 @@
+{{yield}}
+
+<div class="panel panel-default" style="min-height:175px; max-height: 175px;">
+  <div class="panel-heading">
+    Notifications
+  </div>
+  <div class="panel-body">
+{{#each model.Notifications as |notification|}}
+    <div style="border-bottom: solid 1px lightgrey"> {{notification.message}}</div>
+{{/each}}
+
+</div>
+</div>
