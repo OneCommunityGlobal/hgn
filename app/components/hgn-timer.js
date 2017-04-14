@@ -6,20 +6,23 @@ export default Ember.Component.extend({
   clock: Ember.inject.service('hgn-clock'),
   seconds: Ember.computed('clock.second', function() {
       var second = this.get('clock.second');
-      if(second<10)
+      if(second<10) {
         second = "0" + second;
+      }
       return second;
   }),
   minutes: Ember.computed('clock.second', function() {
     var minute = this.get('clock.minute');
-    if(minute<10)
+    if(minute<10) {
       minute = "0"+minute;
+    }
     return minute;
   }),
   hours: Ember.computed('clock.hour', function() {
     var hour = this.get('clock.hour');
-    if(hour<10)
+    if(hour<10) {
       hour = "0"+hour;
+    }
     return hour;
   }),
   status: 0,

@@ -2,7 +2,9 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "tinymce",
+    "Ember"
   ],
   "browser": true,
   "boss": true,
