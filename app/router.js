@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('projects');
   this.route('reports');
   this.route('dashboard');
-  this.route('profilepage');
+  this.route('profile');
   this.route('timelog');
   this.route('myaccount');
   this.route('login');
