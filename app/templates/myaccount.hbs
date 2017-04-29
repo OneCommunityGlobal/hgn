@@ -1,0 +1,41 @@
+{{outlet}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class ="panel panel-default">
+        <div class =panel-heading> My Information</div>
+        <div class="panel-body">
+          <div><img src="{{model.profilePic}}"/></div>
+          <hr>
+          <div><span>Name:</span>{{model.UserName}} </div> <hr>
+          <div>Role:{{model.Role}}</div>
+
+          <div align="right"><input type="button" value="edit" /></div>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class =panel-heading>Contact Information </div>
+        <div class="panel-body">
+          <div>Email:{{model.EmailId}} </div>
+          <div>Phone:{{model.Phone}}</div>
+          <div></div>
+        </div>
+      </div>
+      </div>
+   <div class="col-md-6">
+    <div class="panel panel-default">
+    <div class =panel-heading> Links </div>
+    <div class="panel-body">
+      <div>Personal Links:{{model.PersonalLink}} </div> <!--to do: loop through-->
+      <div>Professional Links:{{model.ProfessionalLink}}</div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
