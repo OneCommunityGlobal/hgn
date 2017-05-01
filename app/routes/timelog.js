@@ -2,8 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(){
+    let realData = this.store.findAll('timelog');
     return{
+
       TimeLogData:{
+        RealData: realData,
         Notifications:
           [
             {message: "Test notification 1"},

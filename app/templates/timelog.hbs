@@ -29,7 +29,11 @@
         <div class="panel panel-default" style="min-height: 350px">
           <div class="panel-heading">Contributions So Far</div>
           <div class="panel-body">
-            <!--To BE Done : Weekly updates, formating etc -->
+            <div style="border: solid 1px red">
+              {{#each model.TimeLogData.RealData as |timelogItem|}}
+                <div> {{timelogItem.workCompleted}} </div>
+              {{/each}}
+            </div>
             <div style="border: solid 1px lightgrey">
               <h6>Week 1</h6>
             <div>
