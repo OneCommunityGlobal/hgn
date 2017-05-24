@@ -49,15 +49,15 @@ export default Ember.Route.extend({
             }
 
         ]
-        
-    }
+
+    };
 },
 actions:{
-    
+
     editRow(user){
-        
+
           this.set('selectedUserName',user.userName);
-      
+
     }
 }
 
