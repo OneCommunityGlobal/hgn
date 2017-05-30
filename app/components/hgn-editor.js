@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  didRender()
+  /*didRender()
   {
     tinymce.init({
   selector: 'textarea',
@@ -25,5 +25,5 @@ export default Ember.Component.extend({
     '//www.tinymce.com/css/codepen.min.css'
   ]
  });
-  }
+  }*/
 });

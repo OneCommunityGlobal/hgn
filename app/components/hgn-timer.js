@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  store: Ember.inject.service(),
   showMyModal: false,
+  newTimelogModel: null,
 
   clock: Ember.inject.service('hgn-clock'),
   seconds: Ember.computed('clock.second', function() {
@@ -55,6 +57,8 @@ export default Ember.Component.extend({
 
         },
         toggleShow() {
+            let store = this.get('store');
+            this.set('newTimelogModel', store.createRecord('timelog'));
             this.set('showMyModal', !this.get('showMyModal'));
         }
 

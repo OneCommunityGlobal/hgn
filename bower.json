@@ -9,6 +9,7 @@
     "chartjs": "1.0.2",
     "froala-wysiwyg-editor": "^2.2.3",
     "font-awesome": "^4.6.1",
-    "summernote": "~0.7.0"
+    "summernote": "~0.7.0",
+    "moment": "^2.18.1"
   }
 }

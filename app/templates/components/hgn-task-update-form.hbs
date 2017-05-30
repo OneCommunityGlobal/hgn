@@ -1,50 +1,17 @@
 <div class="task-update">
 
 
-  <label>Total Time worked</label>
-  <table>
-    <tr>
-      <td>
-        {{super-number id="hours_input" min=0 max=23 loop=true value=1}}
-      </td>
-      <td>
-        {{super-number id="minutes_input" value=0 loop=true min=0 max=59 loop=true}}
-      </td>
-      <td>
-        {{super-number id="standard_seconds" value=0 min=0 max=59 loop=true}}
-      </td>
-    </tr>
-    <tr style="text-align:center">
-      <td>
-        Hours
-      </td>
-      <td>
-        Minutes
-      </td>
-      <td>
-        Seconds
-      </td>
-    </tr>
-  </table>
-
+  <label>Total Time worked (hours) </label>
+  {{input value=model.totalSeconds}}
   <hr>
 
   <label> Select Project </label>
-  <select class="form-control" id="sel1">
-    <option>Food Programme</option>
-    <option>Software Development</option>
-    <option>Real Estate</option>
-  </select>
+  {{input value=model.project}}
 
   <hr>
 
   <label> Select Task </label>
-  <select class="form-control" id="sel1">
-    <option>Task 1</option>
-    <option>Task 2</option>
-    <option>Task 3</option>
-    <option>Task 4</option>
-  </select>
+  {{input value=model.task}}
 
 
   <hr>
@@ -52,7 +19,7 @@
   <label> Description </label>
 
 
-  {{hgn-editor}}
+  {{hgn-editor model=model}}
 
 
 <hr>
