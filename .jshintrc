@@ -4,7 +4,8 @@
     "window",
     "-Promise",
     "tinymce",
-    "Ember"
+    "Ember",
+    "moment"
   ],
   "browser": true,
   "boss": true,

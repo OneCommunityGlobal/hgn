@@ -57,6 +57,7 @@ export default Ember.Component.extend({
 
         },
         toggleShow() {
+          console.log('toggleShow');
             let store = this.get('store');
             this.set('newTimelogModel', store.createRecord('timelog'));
             this.set('showMyModal', !this.get('showMyModal'));

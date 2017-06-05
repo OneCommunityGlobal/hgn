@@ -1,3 +1,9 @@
-{{#bootstrap-modal isVisible=isVisible title="Add Time to Task"}}
+{{!-- {{#bootstrap-modal isVisible=isVisible title="Add Time to Task"}}
     {{hgn-task-update-form model=model}}
-{{/bootstrap-modal}}
+{{/bootstrap-modal}} --}}
+
+{{#bs-modal-simple open=isVisible title="Add time to task" submitTitle="Save" closeTitle="Cancel" onSubmit=(action "saveTimelog")}}
+
+  {{hgn-task-update-form model=model}}
+
+{{/bs-modal-simple}}

@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  showMyModal: false,
   model(){
     let realData = this.store.findAll('timelog');
+    console.log(realData)
     return{
 
       TimeLogData:{

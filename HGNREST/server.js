@@ -102,7 +102,7 @@ app.post('/api/timelogs', function(req, res) {
       console.log('Timelogs POST error ', err);
       res.send(err)
     } else {
-      res.send('ok')
+      res.send(t)
     }
   })
 

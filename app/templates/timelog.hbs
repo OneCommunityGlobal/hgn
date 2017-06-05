@@ -19,10 +19,7 @@
       <div class="col-md-12">
         <div class="panel">
         <button type="submit" id="addTimeToTask" type="button" class="btn btn-large btn-primary" {{action "toggleShow"}}>Add time to task</button>
-
-        {{#ember-wormhole to="destination"}}
-          {{hgn-modal isVisible=showMyModal}}
-        {{/ember-wormhole}}
+          {{hgn-modal isVisible=false}}
         </div>
       </div>
       <div class="col-md-12">
