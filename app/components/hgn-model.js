@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
   actions: {
-    doSave(d, meta) {
+    doSave(d) {
       //d.reject();
       d.resolve();
     },

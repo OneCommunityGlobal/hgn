@@ -4,15 +4,26 @@ var {Schema} = mongoose;
 
 var app = express();
 
-//Initial Configuration for the Server.
 app.use(function(req, res, next) {
-	// For testing purpose I'm Commenting the below line, but later somepoint we can just make sure to allow traffic only from particular port.
 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  	res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-    	next();
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  // intercept OPTIONS method
+  // this allows cross domain requests to come from Ember, as Ember first sends an OPTIONS request
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  }
+  else {
+    next();
+  }
 });
 
+var bodyParser = require('body-parser')
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 // Connects to local Database, if the database is not present creates one for us.
 mongoose.connect('mongodb://localhost/hgnData');
 mongoose.set('debug', true);
@@ -37,10 +48,9 @@ var noteSchema = new Schema({
 });
 
 var timelogSchema = new Schema({
-	//profile: { type: Schema.Types.ObjectID, ref: 'profiles' },
-  date: {type : Date, default : Date.now},
-  startTime: Date,
-  endTime: Date,
+	//profile: { type: Schema.Types.ObjectID, ref: 'profile' },
+  createDate: {type : Date, default : Date.now},
+  lastModifyDate: {type : Date, default : Date.now},
   totalSeconds: Number,
   tangible: Boolean,
   workCompleted: String,
@@ -53,7 +63,7 @@ var Timelog = mongoose.model('timelog', timelogSchema);
 insertDummyData();
 
 app.get('/api/',function(req,res) {
-	res.send('Working');
+	res.send('Success');
 });
 
 app.get('/api/profiles', function(req,res) {
@@ -79,8 +89,23 @@ app.get('/api/timelogs', function(req,res) {
 });
 
 
-app.get('api/timelog', function(req, res){
+app.get('/api/timelog', function(req, res){
 	console.log('timelog get: ', res.body)
+})
+
+app.post('/api/timelogs', function(req, res) {
+	console.log('timelogs POST... ', req.body)
+
+	let t = new Timelog(req.body)
+	t.save((err) => {
+    if (err) {
+      console.log('Timelogs POST error ', err);
+      res.send(err)
+    } else {
+      res.send('ok')
+    }
+  })
+
 })
 
 
@@ -95,9 +120,8 @@ function insertDummyData() {
 		else {
 			if (docs && docs.length == 0) {
 				let t = new Timelog({
-					date: '2017-04-06',
-					startTime: '2017-04-06 12:00:00',
-					endTime: '2017-04-06 13:00:00',
+					createDate: '2017-04-06',
+          lastModifyDate: '2017-05-06',
 					totalSeconds: 60 * 60,
 					tangile: true,
 					workCompleted: 'Working on really great things.',
@@ -135,5 +159,12 @@ function insertDummyData() {
 	})
 }
 
+
+app.all('*', function (req, res, next) {
+    return res.status(404).json({success: false, message: 'Route \'' + req.url + '\' is invalid.'});
+});
+app.use(function(err, req, res, next) {
+    return res.status(500).json(err);
+});
 
 app.listen('4500');
