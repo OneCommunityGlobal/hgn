@@ -7,7 +7,7 @@
       <div class="panel-heading">
         User Login
       </div>
-      <form name="submitLogin" >
+      <form name="submitLogin" {{action 'authenticate' on='submit'}}>
       <div class="panel-body">
         <div class="form-group input-group" >
           <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -19,9 +19,14 @@
         </div>
         
         <div class="form-group">
-          <button type="submit" class="btn btn-def btn-block" {{action "login" username password}} >Login</button>
+          <button type="submit" class="btn btn-def btn-block">Login</button>
         </div>
       </div>
+     
+       {{#if errorMessage}}
+         <p>{{errorMessage}}</p>
+       {{/if}}
+     
       </form>
     </div>
       </div>

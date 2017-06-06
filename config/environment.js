@@ -10,9 +10,7 @@ module.exports = function(environment) {
        'connect-src' : "'self' http://localhost:4500"
     },
     EmberENV: {
-      EXTEND_PROTOTYPES:{
-        Date: false,
-      },
+    //  EXTEND_PROTOTYPES:false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -24,7 +22,9 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-
+  ENV['ember-simple-auth'] = {
+  baseURL: '/'
+  };
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
