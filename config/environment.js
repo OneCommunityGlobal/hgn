@@ -10,7 +10,6 @@ module.exports = function(environment) {
        'connect-src' : "'self' http://localhost:4500"
     },
     EmberENV: {
-    //  EXTEND_PROTOTYPES:false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
