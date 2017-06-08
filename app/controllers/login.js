@@ -5,8 +5,8 @@ export default Ember.Controller.extend({
 
   actions: {
     authenticate() {
-      let { identification, password } = this.getProperties('username', 'password');
-      this.get('session').authenticate('authenticator:oauth2', identification, password).catch((reason) => {
+      let { username, password } = this.getProperties('username', 'password');
+      this.get('session').authenticate('authenticator:oauth2', username, password).catch((reason) => {
         this.set('errorMessage', reason.error || reason);
       });
     }
