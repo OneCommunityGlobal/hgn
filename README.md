@@ -16,6 +16,7 @@ You will need the following things properly installed on your computer.
 * [Bower](http://bower.io/)
 * [Ember CLI](http://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
+* [MongoDB](https://www.mongodb.com/download-center#community)
 
 ## Installation
 
@@ -25,7 +26,14 @@ You will need the following things properly installed on your computer.
 * `bower install`
 
 ## Running / Development
-
+* start and connect to MongoDB.
+   *change to the directory where MongoDB is installed
+    - mongod 
+    - mongo
+* start node server
+   *change to the directory ../hgn/HGNREST
+    - noder server.js
+* change into the application directory
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
