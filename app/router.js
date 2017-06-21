@@ -13,7 +13,7 @@ Router.map(function() {
   this.route('timelog');
   this.route('myaccount');
   this.route('login');
-  this.route('usermanagement');
+  this.route('user', { path:'/usermanagement' });
 });
 
 export default Router;
