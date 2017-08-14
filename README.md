@@ -35,6 +35,25 @@ You will need the following things properly installed on your computer.
     - noder server.js
 * change into the application directory
 * `ember server`
+       **NOTE:** If an error like `app.import is not a function` occurs,
+       then add the below lines to ember-fetch/index.js [of ember-simple-auth] in the included hook.
+          ```
+          this._super.included.apply(this, arguments);
+           if (typeof app.import !== 'function' && app.app) {
+              app = app.app;
+              }
+           ```
+       this may look like:
+        ```
+        included: function(app) {
+            this._super.included.apply(this, arguments);
+              if (typeof app.import !== 'function' && app.app) {
+              app = app.app;
+              }
+             app.import('vendor/ember-fetch.js', {
+             ...
+          ```
+        then do `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
