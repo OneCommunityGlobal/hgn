@@ -8,15 +8,29 @@ export default Clock.extend({
   five: 0,
   quarter: 0,
   hour: 0,
+  started: false,
+
+  startClock(){
+    this.started = true;
+    this.start();
+  },
+
+  stopClock(){
+    this.started = false;
+    this.stop();
+  },
 
   reset() {
     this.stop();
+    this.started = false;
     this.setProperties({second: 0, minute: 0, five: 0, quarter: 0, hour: 0});
   },
 
 
   timeChange: Ember.observer('time', function() {
-    this.tick();
+    if(this.started){
+      this.tick();
+    }
   }),
 
   tick() {

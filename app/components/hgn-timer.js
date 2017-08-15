@@ -5,6 +5,7 @@ export default Ember.Component.extend({
 
   clock: Ember.inject.service('hgn-clock'),
   seconds: Ember.computed('clock.second', function() {
+
       var second = this.get('clock.second');
       if(second<10) {
         second = "0" + second;
@@ -12,6 +13,7 @@ export default Ember.Component.extend({
       return second;
   }),
   minutes: Ember.computed('clock.second', function() {
+
     var minute = this.get('clock.minute');
     if(minute<10) {
       minute = "0"+minute;
@@ -38,18 +40,19 @@ export default Ember.Component.extend({
         timerAction: function() {
             if(this.get('status') === 0)
             {
-              this.get('clock').start();
+              this.get('clock').startClock();
               this.setProperties({status:1, actionText: "Stop",actionIcon:"stop", stopDisabled:""});
             }
             else if(this.get('status') === 1)
             {
-              this.get('clock').stop();
+              this.get('clock').stopClock();
               this.setProperties({status:0, actionText: "Start", actionIcon:"play"});
             }
 
         },
         resetTimer: function()
         {
+
             this.get('clock').reset();
             this.setProperties({status:0, actionText: "Start",actionIcon:"play", stopDisabled:"disabled"});
 
