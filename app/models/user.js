@@ -7,4 +7,5 @@ export default DS.Model.extend({
 	email: DS.attr('string'),
 	contact: DS.attr('string'),
 	role: DS.attr('string'),
+	_id: DS.attr('string')
 });
