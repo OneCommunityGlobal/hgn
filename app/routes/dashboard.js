@@ -4,6 +4,11 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   model(){
-    return this.get('datastore').getDashboardData();
+    
+    var data = this.get('datastore').getDashboardData();
+    
+    console.log("some data"+ data[0]);
+    
+    return data;
     }
 });
