@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { Promise } from 'rsvp';
+
 
 export default Ember.Service.extend({
 
@@ -17,4 +17,4 @@ export default Ember.Service.extend({
  }
                
     
-})
+});
