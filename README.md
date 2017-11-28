@@ -86,3 +86,5 @@ Specify what it takes to deploy your app.
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
+Before running the code on this branch, please run following from command prompt.
+mongoimport -d hgnData -c dashboard "<pathto json file found under public\data>"
