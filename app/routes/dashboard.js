@@ -7,7 +7,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     
     var data = this.get('datastore').getDashboardData();
     
-    console.log("some data"+ data[0]);
     
     return data;
     }
