@@ -1,6 +1,6 @@
-db.AllProjects.insert([
-{"ProjectName" : "Project1", IsActive: 1, Tasks : [{Id :1, Description:"Eating"}, {Id :2, Description:"Eating"}, {Id :3, Description:"Playing"}]},
+db.allProjects.insert([
+{"projectName" : "Project1", isActive: 1, tasks : [{id :1, description:"Eating"}, {id :2, description:"Eating"}, {id :3, description:"Playing"}]},
 
-{"ProjectName" : "Project2", IsActive: 0, Tasks : [{Id :1, Description:"Skiing"}, {Id :2, Description:"Driving"}, {Id :3, Description:"Rowing"}]}
+{"projectName" : "Project2", isActive: 0, tasks : [{id :1, description:"Skiing"}, {id :2, description:"Driving"}, {id :3, description:"Rowing"}]}
 
 ])
