@@ -1,4 +1,4 @@
-db.timeEntry.insert({ 
+db.timeEntries.insert({ 
     "rollupWeek" : "11/26/2017", 
     "rollupMonth" : "112017", 
     "rollupYear" : "2017", 
