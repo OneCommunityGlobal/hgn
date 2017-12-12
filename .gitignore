@@ -17,6 +17,9 @@
 npm-debug.log
 testem.log
 /.editor-config
+/.gitignore
+/.git
+
 
 #IDE specific
 /.idea
