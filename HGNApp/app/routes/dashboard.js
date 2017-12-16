@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
-//Tesing
+//Testing
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   model(){
