@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 import $ from 'jquery';
 
+//import d3 from 'ember-d3';
+
 export default Ember.Mixin.create({
   data: [],
 
@@ -103,7 +105,7 @@ export default Ember.Mixin.create({
     let svg = this.get('chartSVG');
     var scale = this.get('yScale');
     var ticks = 6;
-    let width = this.get('chartWidth');
+    //let width = this.get('chartWidth');
 
     var minMax = scale.domain();
     //var diff = minMax[1] - minMax[0];

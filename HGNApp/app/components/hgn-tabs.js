@@ -4,10 +4,10 @@ import ChartMixin from './../mixins/chart';
 export default Ember.Component.extend(ChartMixin, {
 //Horizontal bar chart
   drawData: function() {
-    var color = '#FDFEFE';
+   // var color = '#FDFEFE';
     var data = this.get('data');
-    var height = this.get('chartHeight');
-    var width = this.get('chartWidth');
+    //var height = this.get('chartHeight');
+    //var width = this.get('chartWidth');
     var svg = this.get('chartSVG');
     var x = this.get('xScale');
     var y = this.get('yScale');
@@ -28,7 +28,7 @@ export default Ember.Component.extend(ChartMixin, {
       return y(d.name);
     })
     .attr('height', y.bandwidth() / 2)
-    .attr('x', function(d) {
+    .attr('x', function() {
       return 0;
     })
     .attr('width', function(d) {
