@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var validate = require('mongoose-validate');
+var bcrypt = require('bcryptjs');
 require('mongoose-type-url');
+const SALT_Rounds = 10;
 
 var userProfileSchema = new Schema({
   userName: {type: String, required: true},
@@ -16,12 +18,32 @@ var userProfileSchema = new Schema({
   weeklyComittedHours : {type: Number, default: 10},
   createdDate: {type: Date, required: true},
   lastModifiedDate: {type: Date, required: true, default : Date.now()},
-  professionalLinks : [{Name :String, Link : String}],
+  professionalLinks : [{Name :String, Link: {type: String}}],
   socialLinks : [{Name :String, Link : String}],
   otherLinks : [{Name :String, Link: String}],
   teamId : [{type: mongoose.SchemaTypes.ObjectId, ref: 'team'}],
   badgeCollection: [{badgeName: String, quantity: Number, lastModifiedDate: Date}]
   
+});
+
+userProfileSchema.pre('save', function(next){
+
+  var user = this;
+  if (!user.isModified('password')) return next();
+
+   bcrypt.genSalt(SALT_Rounds)
+  .then(function(result){
+    return bcrypt.hash(user.password, result);
+    })
+    .then(function(hash){
+      user.password = hash;
+      next();
+    })
+  .catch(function(error){
+    next(error);
+  });
+  
+
 });
 
 module.exports = mongoose.model('userProfile', userProfileSchema, 'userProfiles');
