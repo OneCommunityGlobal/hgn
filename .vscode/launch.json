@@ -7,6 +7,6 @@
     "type": "node",
     "request": "launch",
     "name": "Launch Program",
-    "program": "${workspaceFolder}/HGNREST\\routes\\dashboardRouter.js"
+    "program": "${workspaceFolder}/hgnrest/server.js"
   }]
 }
