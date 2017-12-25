@@ -3,15 +3,15 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     loginservice : Ember.inject.service("login"),
     actions: {
-        login()
+        login(userName, password)
         {
-            var data= JSON.stringify({
-                
-                  "useName": this.get('userName'), // you're getting this property from the controller now
-                  "password": this.get('password')
-        });
+            var data = {
+                "userName": userName,
+                "password" : password
+            };
+           this.get('loginservice').login(data);
 
-            this.get('loginservice').login(data);
+           
         }
     }
 });
