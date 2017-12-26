@@ -6,6 +6,7 @@ export default Ember.Component.extend(ChartMixin, {
   drawData: function() {
    // var color = '#FDFEFE';
     var data = this.get('data');
+    console.log(data);
     //var height = this.get('chartHeight');
     //var width = this.get('chartWidth');
     var svg = this.get('chartSVG');
