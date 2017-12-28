@@ -3,21 +3,29 @@ import ENV from '../config/environment';
 export default Ember.Service.extend({
 
  host: ENV.webServer,
+ TOKEN_KEY : "token",
   
-  post(data) {
+ login (data) {    
 
-    
-
-    let loginpromise =  Ember.$.ajax({
+   let loginPromise = Ember.$.ajax({
       url: this.host +"/login",
       type: "POST",
       data: data
     });
+    return loginPromise;    
+  },
 
- return loginpromise;
-    
-    
 
+  isAuthenticated()
+  {
+    //TODO add token expiry also
+    return (!!localStorage.getItem(this.TOKEN_KEY));
+
+  },
+  logout()
+  {
+    localStorage.removeItem(this.TOKEN_KEY);
   }
+
 });
 

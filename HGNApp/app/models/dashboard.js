@@ -5,6 +5,7 @@ import Ember from 'ember';
 export default Ember.Route.extend( {
 
   datastoreService : Ember.inject.service("datastore-service"),
+  authService : Ember.inject.service("login-service"),
 
   model(){
     return this.get('datastoreService').getDashboardData();
