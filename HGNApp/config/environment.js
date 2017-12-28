@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    webServer: "http://localhost:4500/api",
     contentSecurityPolicy: {
        'connect-src' : "'self' http://localhost:4500"
     },
@@ -19,6 +20,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      
     }
   };
   ENV['ember-simple-auth'] = {
