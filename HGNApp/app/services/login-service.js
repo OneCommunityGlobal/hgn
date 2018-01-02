@@ -1,9 +1,11 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
+
 export default Ember.Service.extend({
 
  host: ENV.webServer,
- TOKEN_KEY : "token",
+ LoggedinUserId: null,
+ LoggedinUserRole: null,
   
  login (data) {    
 
@@ -19,12 +21,25 @@ export default Ember.Service.extend({
   isAuthenticated()
   {
     //TODO add token expiry also
-    return (!!localStorage.getItem(this.TOKEN_KEY));
+    return (!!localStorage.getItem(ENV.TOKEN_KEY));
 
   },
   logout()
   {
-    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(ENV.TOKEN_KEY);
+  },
+
+  getLoggedinUser()
+  {
+     let promise = Ember.$.ajax({
+      url : this.host + "/login" ,
+      type: "GET",
+      beforeSend: function(xhr){xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY) );}
+    });
+
+    return promise;
+   
+
   }
 
 });

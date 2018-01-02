@@ -7,6 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     webServer: "http://localhost:4500/api",
+    TOKEN_KEY : "token",
     contentSecurityPolicy: {
        'connect-src' : "'self' http://localhost:4500"
     },
