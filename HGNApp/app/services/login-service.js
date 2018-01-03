@@ -4,16 +4,16 @@ import ENV from '../config/environment';
 export default Ember.Service.extend({
 
  host: ENV.webServer,
- LoggedinUserId: null,
- LoggedinUserRole: null,
-  
+   
  login (data) {    
 
-   let loginPromise = Ember.$.ajax({
+   let loginPromise =    Ember.$.ajax({
       url: this.host +"/login",
       type: "POST",
       data: data
     });
+    
+
     return loginPromise;    
   },
 
@@ -31,16 +31,14 @@ export default Ember.Service.extend({
 
   getLoggedinUser()
   {
-     let promise = Ember.$.ajax({
+     return Ember.$.ajax({
       url : this.host + "/login" ,
       type: "GET",
       beforeSend: function(xhr){xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY) );}
-    });
+    });    
 
-    return promise;
-   
+  },
 
-  }
 
 });
 

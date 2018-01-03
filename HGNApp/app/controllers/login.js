@@ -3,7 +3,7 @@ import ENV from '../config/environment';
 
 
 export default Ember.Controller.extend({
-  loginService: Ember.inject.service("login-service"),
+  
   actions: {
     login() {
 
@@ -15,19 +15,18 @@ export default Ember.Controller.extend({
         "password": password
       };
 
-      let loginPromise = this.get('loginService').login(logindata);
+      let loginPromise = this.get('AuthService').login(logindata);
 
       loginPromise
-        .done(function (result) {
+         .done(function (result) {
           localStorage.setItem(ENV.TOKEN_KEY, result);
-          self.transitionToRoute('dashboard');
-
+            self.transitionToRoute('dashboard');
         })
-        .fail(
-          function () {
-            self.transitionToRoute('login');
-          }
-        );
+        // .fail(
+        //   function () {
+        //     self.transitionToRoute('login');
+        //   }
+        // );
     }
   }
 

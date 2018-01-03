@@ -4,12 +4,13 @@ export default Ember.Controller.extend({
     
     userProfile :{},
     
-    actions:
-    {
+    actions :{
+
         MyProfile(){
-            this.transitionToRoute('myprofile');
-        }
-        
-    }
+               
+          this.transitionToRoute('myprofile');
+      }
+      
+      }
 
 });

@@ -5,8 +5,7 @@ import ENV from '../config/environment';
 export default Ember.Service.extend({
 
     
-    loginervice : Ember.inject.service('login-service') ,
-   getDashboardData(){  
+      getDashboardData(){  
        return Ember.$.ajax( ENV.webServer+ "/dashboard",
         {
             "type" : "get",
