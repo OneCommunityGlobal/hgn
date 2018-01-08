@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('myaccount');
   this.route('login');
   this.route('user', { path:'/usermanagement' });
+  this.route('admin');
 });
 
 export default Router;

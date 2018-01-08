@@ -1,0 +1,16 @@
+{{outlet}}
+<div class="admin-page">
+  <div class="container">
+    <div class="card">
+      <a href="#" class="btn btn-primary">Add New Project</a>
+      <div class="card-block">
+        <h3 class="card-header">Project List</h3>
+        <div class="card-subtitle mb-2 text-muted list-group list-group-flush">
+          {{#each model as |projectUnit|}}
+            {{project-task-list project=projectUnit }}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

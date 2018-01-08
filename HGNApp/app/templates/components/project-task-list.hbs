@@ -1,0 +1,9 @@
+{{yield}}
+
+<div {{action 'toggleProjectDetail'}} class="list-group-item card-link">{{project.name}}</div>
+{{#if isProjectDetail}}
+  {{#each project.tasks as |task|}}
+    <li class="list-group-item card-link" style="margin-left: 50px">{{task}}</li>
+  {{/each}}
+  <a href="#" class="card-link" style="margin-left: 50px">Add New Task</a>
+{{/if}}
