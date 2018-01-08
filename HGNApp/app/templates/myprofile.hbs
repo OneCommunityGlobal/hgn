@@ -1,22 +1,22 @@
 <form class = "container">
      
   <div class="form-group  col-sm form-inline ">
-    <label for="firstName">First Name</label>
-    {{input class="form-control" name=firstName  id = "firstName" type = "text" value = model.firstName required =true}}
+    <label for="firstName">*First Name:</label>
+    {{input class="form-control required" name=firstName  id = "firstName" type = "text" value = model.firstName  }}
   </div>
 
   <div class="form-group  col-sm form-inline">
-    <label for="lastName">Last Name</label>
+    <label for="lastName">*Last Name:</label>
     {{input class="form-control"  name=lastName id ="lastName" type = "text" value = model.lastName }}
   </div>
 
   <div class="form-group  col-sm form-inline">
-    <label for="role">Role</label>
+    <label for="role">*Role:</label>
     {{input class="form-control" type = "text" value = model.role readonly = (if isUserAdministrator "undefined" "readonly") }}
   </div>
 
    <div class="form-group  col-sm form-inline">
-    <label for="role">Email</label>
+    <label for="role">*Email:</label>
     {{input class="form-control" type = "email" value = model.email readonly = (if isUserAdministrator "undefined" "readonly")  }}
   </div>
 
@@ -45,7 +45,7 @@
   </div>
 
   <div class="form-group  col-sm">
-    <label> Teams</label>
+    <label>*Teams:</label>
     {{#each model.teamId as |team|}}     
            {{input class="form-control" type = "text" value = team   readonly = (if isUserAdministrator "undefined" "readonly") }}
 
