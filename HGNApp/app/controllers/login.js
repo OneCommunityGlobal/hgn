@@ -1,14 +1,33 @@
 import Ember from 'ember';
+import ENV from '../config/environment';
+
 
 export default Ember.Controller.extend({
-    session: Ember.inject.service('session'),
-
+  
   actions: {
-    authenticate() {
-      let { username, password } = this.getProperties('username', 'password');
-      this.get('session').authenticate('authenticator:oauth2', username, password).catch((reason) => {
-        this.set('errorMessage', reason.error || reason);
-      });
+    login() {
+
+      let userName = this.get('userName');
+      let password = this.get('password');
+      let self = this;
+      let logindata = {
+        "userName": userName,
+        "password": password
+      };
+
+      let loginPromise = this.get('AuthService').login(logindata);
+
+      loginPromise
+         .done(function (result) {
+          localStorage.setItem(ENV.TOKEN_KEY, result);
+            self.transitionToRoute('dashboard');
+        })
+        // .fail(
+        //   function () {
+        //     self.transitionToRoute('login');
+        //   }
+        // );
     }
   }
+
 });

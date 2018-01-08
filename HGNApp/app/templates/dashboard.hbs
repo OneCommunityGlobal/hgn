@@ -1,10 +1,14 @@
 <div class="container">
+  
     <div class="row">
     <div class="col-md-3" >
       <div class="col-md-12" >
-        <a href="/profile" style="text-decoration:none; color: black;">
-          {{hgn-profilebox title="UserName" role="Administrator" logo="https://addons.cdn.mozilla.net/static//img/zamboni/anon_user.png"}}
-        </a>
+           {{ hgn-profilebox 
+         firstName=userProfile.firstName lastName = userProfile.lastName role=userProfile.role 
+         logo="https://addons.cdn.mozilla.net/static//img/zamboni/anon_user.png"
+         MyProfile = (action 'MyProfile')
+         }}
+        
       </div>
       <div class="col-md-12" >
         <a href="/profile" style="text-decoration:none; color: black;">

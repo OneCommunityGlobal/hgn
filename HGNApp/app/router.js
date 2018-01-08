@@ -7,13 +7,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('projects');
-  this.route('reports');
   this.route('dashboard');
-  this.route('profile');
   this.route('timelog');
-  this.route('myaccount');
   this.route('login');
-  this.route('user', { path:'/usermanagement' });
+  this.route('myprofile');
   this.route('admin');
 });
 
