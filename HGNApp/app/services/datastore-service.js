@@ -27,14 +27,15 @@ export default Ember.Service.extend({
     },
     saveUserProfileData( user, userId)
     {
-        alert("service triggered");
+       
        return Ember.$.ajax( ENV.webServer+ "/userprofile/" + userId,
        {
            "type" : "put",
            "dataType":"JSON",
            data: user,
            beforeSend: function(xhr){xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY) );}                
-       }  );
+       }  )
+       
 
        }
 

@@ -12,5 +12,16 @@ export default Ember.Mixin.create({
       this.transitionTo('login');
     }
 
-  }
+  } ,
+
+    setupController: function(controller, model){
+
+      controller.set('model', model);
+      this.get('AuthService').getLoggedinUser()
+      .then(function(results){
+        controller.set('userrole', results.role);
+        controller.set('userId', results.requestorId);
+        });
+      
+    }
 });
