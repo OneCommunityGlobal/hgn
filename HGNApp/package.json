@@ -49,6 +49,7 @@
     "loader.js": "^4.0.1"
   },
   "dependencies": {
+    "ember-validations": "^2.0.0-alpha.5",
     "package.json": "^2.0.1"
   }
 }
