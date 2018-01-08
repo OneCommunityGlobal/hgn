@@ -14,7 +14,7 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin, {
 
     controller.set('model', model);
     this.get('AuthService').getLoggedinUser()
-   .then(this.get('DataService').getUserProfileData)
+   .then(results => this.get('DataService').getUserProfileData(results))
    .then(function(results){controller.set('userProfile', results);});
     
   },

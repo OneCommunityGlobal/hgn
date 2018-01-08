@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import UserProfileValidationMixin from '../mixins/user-profile-validation-mixin';
 
-export default Ember.Controller.extend({
 
+
+export default Ember.Controller.extend(UserProfileValidationMixin,{
 
   self: this,
 
@@ -12,62 +14,19 @@ export default Ember.Controller.extend({
 
   }),
 
-  isFormValid: function (user) {
-
-    let isFormValid = true;
-    let errors = [];
-
-    if(user.firstName.length ===0 || user.firstName == null)
-    {
-        isFormValid = false;
-        errors.push("First Name is a mandatory field");
-    }
-    if(user.firstName.length ===0 || user.firstName == null)
-    {
-        isFormValid = false;
-        errors.push("First Name is a mandatory field");
-    }
-
-    if(user.email.length ===0 || user.firstName == null)
-    {
-        isFormValid = false;
-        errors.push("First Name is a mandatory field");
-    }
-
-
-
-
-    return {
-      isFormValid,
-      errors
-    };
-
-
-
-
-  },
-
   actions: {
-
 
     postChanges() {
       let userId = this.get('userId');
       let user = this.get('model');
 
-      let {
-        isFormValid,
-        errors
-      } = this.isFormValid(user);
-
-      if (isFormValid) {
-        this.get('DataService').saveUserProfileData(user, userId)
-          .done(alert("Changes Saved!!!"))
-          .fail((error) => alert(error));
-
-      } else {
-        alert("Please fix errors" + errors);
-
-      }
+      this.validate()
+      .then(()=> {
+          this.get('DataService').saveUserProfileData(user, userId)
+         .then(alert("Saved"));
+        })
+      .catch(console.log(this.get("errors")));
+ 
     },
     discardChanges() {
       this.self.transitionToRoute('dashboard');
