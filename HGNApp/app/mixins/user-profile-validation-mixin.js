@@ -10,5 +10,5 @@ export default Ember.Mixin.create(EmberValidations,{
         "model.role" : {inclusion: { in: ['Volunteer', 'Manager', 'Administrator', 'Core Team'] }},
         "model.userName" : {presence: true},
         "model.isActive" : {inlcusion : {in : [true, false]}}
-      },
+      }
 });
