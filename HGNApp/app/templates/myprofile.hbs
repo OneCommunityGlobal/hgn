@@ -1,69 +1,67 @@
-<form class = "container">
-     
-  <div class="form-group  col-sm form-inline ">
-    <label for="firstName">*First Name:</label>
-    {{input class="form-control required" name=firstName  id = "firstName" type = "text" value = model.firstName  }}
+<div class = "container">
+<form class = "form-horizontal">
+
+  <div class="form-group  col-sm form-inline row ">
+    <div class = "col-xs-6 col-md-4"><label for="firstName">*First Name:</label></div>
+    <div class = "col-xs-12 col-md-8">{{input class="form-control required" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
   </div>
 
-  <div class="form-group  col-sm form-inline">
+  <div class="form-group  col-sm form-inline row">
     <label for="lastName">*Last Name:</label>
-    {{input class="form-control"  name=lastName id ="lastName" type = "text" value = model.lastName }}
+    {{input class="form-control" name=lastName id ="lastName" type = "text" value = model.lastName }}
   </div>
 
-  <div class="form-group  col-sm form-inline">
+  <div class="form-group  col-sm form-inline row">
     <label for="role">*Role:</label>
-    {{input class="form-control" type = "text" value = model.role readonly = (if isUserAdministrator "undefined" "readonly") }}
+    {{input class="form-control" type = "text" value = model.role readonly = (if isUserAdministrator "undefined" "readonly")
+    }}
   </div>
 
-   <div class="form-group  col-sm form-inline">
+  <div class="form-group  col-sm form-inline row">
     <label for="role">*Email:</label>
-    {{input class="form-control" type = "email" value = model.email readonly = (if isUserAdministrator "undefined" "readonly")  }}
+    {{input class="form-control" type = "email" value = model.email readonly = (if isUserAdministrator "undefined" "readonly")
+    }}
+  </div>
+
+  <div class="form-group  col-sm form-inline row">
+    <label for="role">Weekly Committed Hours:</label>
+    {{input class="form-control" type = "email" value = model.weeklyComittedHours readonly = (if isUserAdministrator "undefined"
+    "readonly") }}
+  </div>
+
+  <div class="form-group  col-sm form-inline row">
+    {{#each model.professionalLinks as |link|}}
+    <label for="links">{{link.Name}}</label>
+    {{input class="form-control" type = "text" value = link.Link }}
+    <br> {{/each}}
   </div>
 
   <div class="form-group  col-sm form-inline">
-      <label for="role">Weekly Committed Hours:</label>
-      {{input class="form-control" type = "email" value = model.weeklyComittedHours readonly = (if isUserAdministrator "undefined" "readonly")  }}
-    </div>
-
-<div class="form-group  col-sm form-inline">
-    {{#each model.professionalLinks as |link|}} 
-       <label for="links">{{link.Name}}</label>
- {{input class="form-control" type = "text" value = link.Link   }}
-<br>
-     {{/each}}
+    {{#each model.socialLinks as |link|}}
+    <label for="links">{{link.Name}}</label>
+    {{input class="form-control" type = "text" value = link.Link }}
+    <br> {{/each}}
   </div>
 
   <div class="form-group  col-sm form-inline">
-    {{#each model.socialLinks as |link|}} 
-       <label for="links">{{link.Name}}</label>
-   {{input class="form-control" type = "text" value = link.Link   }}
-<br>
-     {{/each}}
-  </div>
-
-  <div class="form-group  col-sm form-inline">
-    {{#each model.otherLinks as |link|}} 
-       <label for="links">{{link.Name}}</label>
-    {{input class="form-control" type = "text" value = link.Link readonly = (if isUserAdministrator "undefined" "readonly")   }}
-<br>
-     {{/each}}
+    {{#each model.otherLinks as |link|}}
+    <label for="links">{{link.Name}}</label>
+    {{input class="form-control" type = "text" value = link.Link readonly = (if isUserAdministrator "undefined" "readonly") }}
+    <br> {{/each}}
   </div>
 
   <div class="form-group  col-sm">
     <label>*Teams:</label>
-    {{#each model.teamId as |team|}}     
-           {{input class="form-control" type = "text" value = team   readonly = (if isUserAdministrator "undefined" "readonly") }}
-
-     {{/each}}
+    {{#each model.teamId as |team|}} {{input class="form-control" type = "text" value = team.teamName readonly = (if isUserAdministrator
+    "undefined" "readonly") }} {{/each}}
   </div>
 
-  <button type="button" class="btn btn-primary"{{action "postChanges"}}>Save Changes</button>
+  <button type="button" class="btn btn-primary" {{action "postChanges"}}>Save Changes</button>
   <button type="button" class="btn btn-info" {{action "discardChanges"}}>Discard Changes</button>
 
-  {{userrole}}
-  {{userId}}
-  {{isUserAdministrator}}
+  {{userrole}} {{userId}} {{isUserAdministrator}}
 
 </form>
+</div>
 
 {{outlet}}
