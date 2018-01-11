@@ -16,6 +16,9 @@ export default Ember.Controller.extend(UserProfileValidationMixin,{
 
   actions: {
 
+    personalLinksName: "",
+    personalLinksLink : "",
+
     postChanges() {
       let userId = this.get('userId');
       let user = this.get('model');
@@ -28,10 +31,24 @@ export default Ember.Controller.extend(UserProfileValidationMixin,{
       .catch(console.log(this.get("errors")));
  
     },
-    discardChanges() {
-      this.self.transitionToRoute('dashboard');
 
+    addPersonalLink()
+    {
+      let linkName = this.get("newLinkName");
+      let linkLink = this.get("newLinkLink");
+     
+      let newLink = {
+        Name: linkName,
+        Link: linkLink
+      };
+
+      alert(newLink.Name);
+      this.get('model.personalLinks').addObject(newLink);
+
+     
+      
     }
+  
   }
 
 
