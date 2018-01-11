@@ -1,7 +1,23 @@
+var team = require('../models/team');
+var mongoose = require('mongoose');
+
 var userProfileController = function (userProfile) {
 
 
   var getUserProfiles = function (req, res) {
+  
+    var isRequestorAuthorized = function () {
+      /* TODO Perform check if logged in user is user himself or an administrator or core team member or manager*/
+  
+      let AuthorizedRolesToView = [ 'Manager', 'Administrator', 'Core Team'];
+      return (AuthorizedRolesToView.includes(req.body.requestor.role) || req.body.requestor.requestorId === userid )? true: false;
+  
+    };
+  
+    if (!isRequestorAuthorized()) {
+      res.status(403).send("You are not authorized to view all users");
+      return;
+    }
 
     userProfile.find(function (err, profiles) {
       if (err) {
@@ -13,6 +29,12 @@ var userProfileController = function (userProfile) {
 
   };
   var postUserProfile = async function (req, res) {
+
+    if(req.body.requestor.role !== "Administrator")
+    {
+      res.status(403).send("You are not authorized to create new users");
+      return;
+    }
 
     let _userName = (req.body.userName).toLowerCase();
     let _email = (req.body.email).toLowerCase();
@@ -36,6 +58,7 @@ var userProfileController = function (userProfile) {
       res.status(400).send({error: errorMessage});
       return;
     }
+   
 
 
     var up = new userProfile();
@@ -51,7 +74,7 @@ var userProfileController = function (userProfile) {
     up.professionalLinks = req.body.professionalLinks;
     up.socialLinks = req.body.socialLinks;
     up.otherLinks = req.body.otherLinks;
-    up.teamId = req.body.teamId;
+    up.teamId = Array.from(new Set(req.body.teamId));
     up.createdDate = Date.now();
 
 
@@ -63,7 +86,7 @@ var userProfileController = function (userProfile) {
 
   }
 
-  var putUserProfile = function (req, res) {
+var putUserProfile = function (req, res) {
 
     let userid = req.params.userId;
 
@@ -71,30 +94,31 @@ var userProfileController = function (userProfile) {
 
     var isRequestorAuthorized = function () {
 
-      return true;
+     return (req.body.requestor.role === "Administrator" || req.body.requestor.requestorId === userid )? true: false;
 
     };
 
     var isRequestorAdmin = function () {
-      /* TODO Perform check if logged in user  administrator so that updates to admin speific fields ca be handled*/
-      return true;
+      return (req.body.requestor.role === "Administrator" )? true: false;
     };
 
     if (!isRequestorAuthorized()) {
       res.status(403).send("You are not authorized to update this user");
+      return;
     }
 
 
-    userProfile.findById(userid, function (err, record) {
+    userProfile.findById(userid,  function (err, record) {
 
         if (err || record == null) {
 
           if (record == null) err = " No valid records found";
 
           res.status(404).send(err);
+          return;
         } else {
 
-          record.password = req.body.password;
+        
           record.firstName = req.body.firstName;
           record.lastName = req.body.lastName;
           record.phoneNumber = req.body.phoneNumber;
@@ -108,7 +132,7 @@ var userProfileController = function (userProfile) {
             record.role = req.body.role;
             record.weeklyComittedHours = req.body.weeklyComittedHours;
             record.otherLinks = req.body.otherLinks;
-            record.TeamId = req.body.TeamId;
+            record.TeamId = Array.from(new Set(req.body.teamId));
           }
           record.save()
             .then(function (results) {
@@ -116,7 +140,7 @@ var userProfileController = function (userProfile) {
                 _id: record._id
               });
             })
-            .catch(error => res.status(501).send(error));
+            .catch(error => res.status(400).send(error));
 
 
         }});
@@ -126,22 +150,14 @@ var userProfileController = function (userProfile) {
 
 var getUserById = function (req, res) {
 
-  var userid = req.params.userId;
+  let userid = req.params.userId;
+  let user = {};
+  let teamid ="";
 
-  var isRequestorAuthorized = function () {
-    /* TODO Perform check if logged in user is user himself or an administrator or core team member or manager*/
-    return true;
-
-  };
-
-  if (!isRequestorAuthorized()) {
-    res.status(403).send("You are not authorized to view this user");
-    return;
-  }
-
-  userProfile.findById(userid)
+  userProfile.findById(userid, '-password -lastModifiedDate -createdDate -__v')
+  .populate('teamId', '_id teamName')
   .then(results => res.status(200).send(results))
-  .catch(error => res.status(404).send(error))
+   .catch(error => res.status(404).send(error));
 
 };
 
