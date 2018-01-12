@@ -1,36 +1,52 @@
 <div class="project-page">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
-            <div class="panel-heading" style="background-color:#4E5D6C">Project List</div>
-            <div class="panel-body" style="padding:0px" >
-                {{project-list model=model.projectsData}}
-            </div>
+  <div class="container">
+    <h2>Projects</h2>
+    <button class="btn" type="button" disabled= {{ isUserNotAdministrator }} data-toggle="modal" data-target="#newProjectModal"> <span class="glyphicon glyphicon-plus"></span>Add New Project</button>
+    <!-- New Project Modal -->
+    <div class="modal fade" id="newProjectModal">
+      <div class="modal-dialog" role="dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>New Project</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
           </div>
-        </div>
-        <div class="col-md-4" >
-          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
-            <div class="panel-heading" style="background-color:#4E5D6C">Task List  </div>
-            <div class="panel-body" style="padding:0px;overflow:scroll;height:600px" >
-                {{task-list model=model.projectsData}}
-            </div>
+          <div class="modal-body">
+            <form class="">
+              <div class="form-group form-inline">
+                <label for="projectName">Project Name</label> {{input class="form-control required" name=projectName  id="projectName" type="text" placeholder="Enter project name" value=projectName  }}
+              </div>
+              <div class="form-group form-inline">
+                <label for="tasks">Tasks</label> {{input class="form-control required" name=taskName  id="taskName" type="text" placeholder="Enter task" value=taskName  }}
+                <button class="btn" type="button"><span class="glyphicon glyphicon-plus"></span>
+                  </button>
+              </div>
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-primary active">
+                  <input type="radio" name="options" id="active" autocomplete="off" checked> active
+                </label>
+                <label class="btn btn-primary">
+                  <input type="radio" name="options" id="inactive" autocomplete="off"> inactive
+                </label>
+              </div>
+            </form>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default" style="height:650px;background-color:#45515D;text-align:center">
-            <div class="panel-heading" style="background-color:#4E5D6C">Task Updates</div>
-            <div class="panel-body" style="padding:10px;overflow:scroll;height:600px" >
-                {{task-progress model=model.projectsData}}
-            </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" {{ action "addProject" }} data-dismiss="modal">Add Project</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
+    </div>
+    <!-- List of Projects -->
+    <div class="card">
+      <div class="card-block">
+        <div class="card-subtitle mb-2 text-muted list-group list-group-flush">
+          {{ projectName }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-  .project-page{
-    font-size:13px;
-  }
-</style>
+{{outlet}}
