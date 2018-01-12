@@ -6,6 +6,7 @@ import UserProfileValidationMixin from '../mixins/user-profile-validation-mixin'
 export default Ember.Controller.extend(UserProfileValidationMixin, {
 
   self: this,
+  showErrors : true,
   newPersonalLink: {
     Name: "",
     Link: ""
