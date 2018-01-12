@@ -40,12 +40,23 @@ export default Ember.Controller.extend(UserProfileValidationMixin,{
     {
       
       let newLink = this.get('newPersonalLink');
-      this.get('model.personalLinks').addObject(newLink);
 
-      this.set('newPersonalLink',{
-        Name: "",
-        Link: ""
-      } );
+      if(newLink.Name.length <1 ||newLink.Link.length <1)
+      {
+
+      }
+      else
+      {
+        this.get('model.personalLinks').addObject(newLink);
+
+        this.set('newPersonalLink',{} );
+      }
+      
+     
+    },
+    removePersonalLink(personallink)
+    {
+         this.get('model.personalLinks').removeObject(personallink);
     }
   
   }
