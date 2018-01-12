@@ -6,6 +6,10 @@ import UserProfileValidationMixin from '../mixins/user-profile-validation-mixin'
 export default Ember.Controller.extend(UserProfileValidationMixin,{
 
   self: this,
+  newPersonalLink : {
+    Name: "",
+    Link: ""
+  },
 
   isUserAdministrator: Ember.computed('userrole', function () {
 
@@ -13,11 +17,11 @@ export default Ember.Controller.extend(UserProfileValidationMixin,{
     return userrole === "Administrator" ? true : false;
 
   }),
+ 
 
   actions: {
 
-    personalLinksName: "",
-    personalLinksLink : "",
+   
 
     postChanges() {
       let userId = this.get('userId');
@@ -34,19 +38,14 @@ export default Ember.Controller.extend(UserProfileValidationMixin,{
 
     addPersonalLink()
     {
-      let linkName = this.get("newLinkName");
-      let linkLink = this.get("newLinkLink");
-     
-      let newLink = {
-        Name: linkName,
-        Link: linkLink
-      };
-
-      alert(newLink.Name);
+      
+      let newLink = this.get('newPersonalLink');
       this.get('model.personalLinks').addObject(newLink);
 
-     
-      
+      this.set('newPersonalLink',{
+        Name: "",
+        Link: ""
+      } );
     }
   
   }

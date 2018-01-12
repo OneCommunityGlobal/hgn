@@ -30,27 +30,25 @@
         {{#each model.personalLinks as |link|}}
         <div class="form-group ">
         <label  class = "control-label col-sm-2" for="link">{{link.Name}}</label>
-         <div class="col-sm-10">{{input class="form-control" name=link id = "link" type = "text" value = link.Link  }}</div>
+         <div class="col-sm-10">{{input class="form-control" name=link  type = "text" value = link.Link  }}</div>
          </div>
          {{/each}}
 
          <div class="form-group ">            
              <div class="col-sm-10">
-                {{input  class = " form-control col-sm-2" valueBinding = newLinkName placeholder = "Name"}} 
-                {{input class="form-control" valueBinding= newLinkLink type = "text" placeholder = "Link"  }}</div>
-             </div>
-
-         
-
-         <button  class = "pull-right" data-toggle="tooltip" data-placement="right" title = "Add another personal link" {{action "addPersonalLink"}}> + </button>
+                {{input  class = "form-control col-sm-2" value = newPersonalLink.Name placeholder = "Name"}} 
+                {{input class="form-control" value= newPersonalLink.Link type = "text" placeholder = "Link"  }}</div>                
+         <button  class = "pull-right" data-toggle="tooltip" data-placement="right" 
+         title = "Add another personal link" {{action "addPersonalLink" }}> + </button>
          <br>
+        </div>
 
         
 
          {{#each model.adminLinks as |link|}}
          <div class="form-group ">
          <label  class = "control-label col-sm-2" for="link">{{link.Name}}</label>
-          <div class="col-sm-10">{{input class="form-control" name=link id = "link" type = "text" value = link.Link  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+          <div class="col-sm-10">{{input class="form-control" name=link  type = "text" value = link.Link  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
           </div>
           {{/each}}
 
@@ -58,7 +56,7 @@
               <label  class = "control-label col-sm-2" for="team">*Team Membership:</label>              
               {{#each model.teamId as |team|}}
               <label  class = "control-label col-sm-2" for="team"></label> 
-              <div class="col-sm-10">{{input class="form-control" name=team id = "team" type = "text" value = team.teamName  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+              <div class="col-sm-10">{{input class="form-control" name=team  type = "text" value = team.teamName  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
             {{/each}}   
             </div>
         
