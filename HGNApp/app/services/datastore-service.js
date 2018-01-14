@@ -6,9 +6,13 @@ export default Ember.Service.extend({
 
     self: this,
 
-      getDashboardData() {
+      getDashboardData(requestor) {
 
+<<<<<<< HEAD
         let url = ENV.webServer + "/dashboard1";
+=======
+        let url = ENV.webServer + "/dashboard1/" + requestor.requestorId;
+>>>>>>> ee5995e8b3739685d9173ecdae6762ad50f0c42a
         let data = null;
         let method = "get";
 
@@ -32,6 +36,19 @@ export default Ember.Service.extend({
 
         let url = ENV.webServer + "/userprofile/" + userId;
         let data = user;
+        let method = "put";
+
+        let request = this.createEmberrequestObject(url, data, method);
+        return request;
+      },
+
+      getProjectData(){
+        //TODO
+      },
+
+      saveProjectData(project, projectId){
+        let url = ENV.webServer + "/projects/" + projectId;
+        let data = project;
         let method = "put";
 
         let request = this.createEmberrequestObject(url, data, method);
