@@ -11,7 +11,6 @@ Router.map(function() {
   this.route('timelog');
   this.route('login');
   this.route('myprofile');
-  this.route('admin');
 });
 
 export default Router;

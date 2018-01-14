@@ -1,67 +1,103 @@
-<div class = "container">
-<form class = "form-horizontal">
+<div class="container">
+    <form class="form-horizontal .myprofile">
+   
+   <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="firstName">*First Name:</label>
+         <div class="col-sm-10">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
+         {{display-errors errors = errors.model.firstName showErrors= showErrors}}
+    </div>
+    
+    <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="lastName">*Last Name:</label>
+         <div class="col-sm-10">{{input class="form-control" name=lastName id = "lastName" type = "text" value = model.lastName }}</div>
+         {{display-errors errors = errors.model.lastName showErrors= showErrors}}
+    </div>
 
-  <div class="form-group  col-sm form-inline row ">
-    <div class = "col-xs-6 col-md-4"><label for="firstName">*First Name:</label></div>
-    <div class = "col-xs-12 col-md-8">{{input class="form-control required" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
-  </div>
+    <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="role">*Role:</label>
+         <div class="col-sm-10">{{input class="form-control" name=role id = "role" type = "text" value = model.role  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+         {{display-errors errors = errors.model.role showErrors= showErrors}}
+    </div>
 
-  <div class="form-group  col-sm form-inline row">
-    <label for="lastName">*Last Name:</label>
-    {{input class="form-control" name=lastName id ="lastName" type = "text" value = model.lastName }}
-  </div>
+    <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="email">*Email:</label>
+         <div class="col-sm-10">{{input class="form-control" name=email id = "email" type = "email" value = model.email  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+         {{display-errors errors = errors.model.email showErrors= showErrors}}
+    </div>
 
-  <div class="form-group  col-sm form-inline row">
-    <label for="role">*Role:</label>
-    {{input class="form-control" type = "text" value = model.role readonly = (if isUserAdministrator "undefined" "readonly")
-    }}
-  </div>
+    <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="weeklyComittedHours">*Weekly Comitted Hours:</label>
+         <div class="col-sm-10">{{input class="form-control" name=weeklyComittedHours id = "weeklyComittedHours" type = "text" value = model.weeklyComittedHours  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+         {{display-errors errors = errors.model.weeklyComittedHours showErrors= showErrors}}
+    </div>
 
-  <div class="form-group  col-sm form-inline row">
-    <label for="role">*Email:</label>
-    {{input class="form-control" type = "email" value = model.email readonly = (if isUserAdministrator "undefined" "readonly")
-    }}
-  </div>
+    
+        {{#each model.personalLinks as |personallink|}}
+        <div class="form-group ">
+        <label  class = "control-label col-sm-2" for="link">{{personallink.Name}}:</label>
+         <div class="col-sm-9">{{input class="form-control" name=link  type = "text" value = personallink.Link  }}</div>
+         <span class="glyphicon glyphicon-minus col-sm-1 " {{action "removePersonalLink" personallink}}></span>
+         </div>
+         {{/each}}
 
-  <div class="form-group  col-sm form-inline row">
-    <label for="role">Weekly Committed Hours:</label>
-    {{input class="form-control" type = "email" value = model.weeklyComittedHours readonly = (if isUserAdministrator "undefined"
-    "readonly") }}
-  </div>
+         <div class="form-group  ">            
+             <div class ="" >                 
+                 <label  class = "control-label col-sm-2">New Personal Link:</label>
+                 {{input  class = "form-control col-sm-3" value = newPersonalLink.Name placeholder = "Name"}} 
+                 {{display-errors errors = errors.newPersonalLink.Name showErrors= showFormErrors}}
+                {{input class="form-control col-sm-6" value= newPersonalLink.Link type = "text" placeholder = "Link"  }}
+                {{display-errors errors = errors.newPersonalLink.Link showErrors= showFormErrors}}                
+                 <span class="glyphicon glyphicon-plus col-sm-1"  {{action "addPersonalLink" }}></span>
+                 
+           </div>
+         <br>
+        </div>
 
-  <div class="form-group  col-sm form-inline row">
-    {{#each model.professionalLinks as |link|}}
-    <label for="links">{{link.Name}}</label>
-    {{input class="form-control" type = "text" value = link.Link }}
-    <br> {{/each}}
-  </div>
+         
 
-  <div class="form-group  col-sm form-inline">
-    {{#each model.socialLinks as |link|}}
-    <label for="links">{{link.Name}}</label>
-    {{input class="form-control" type = "text" value = link.Link }}
-    <br> {{/each}}
-  </div>
+         {{#each model.adminLinks as |adminLink|}}
+         <div class="form-group ">
+         <label  class = "control-label col-sm-2" for="link">{{adminLink.Name}}:</label>
+          <div class="col-sm-9">{{input class="form-control" name=link  type = "text" value = adminLink.Link readonly = (if isUserAdministrator "undefined" "readonly")  }}</div>
+          {{#if isUserAdministrator}}
+          <span class="glyphicon glyphicon-minus col-sm-1 " {{action "removeAdminLink" adminLink}}></span> 
+          {{/if}}
+        </div>
+          {{/each}}
 
-  <div class="form-group  col-sm form-inline">
-    {{#each model.otherLinks as |link|}}
-    <label for="links">{{link.Name}}</label>
-    {{input class="form-control" type = "text" value = link.Link readonly = (if isUserAdministrator "undefined" "readonly") }}
-    <br> {{/each}}
-  </div>
+          {{#if isUserAdministrator}}
+          <div class="form-group  ">            
+                <div class ="form-inline" >                 
+                    <label  class = "control-label col-sm-2">New Admin Link:</label>
+                    {{input  class = "form-control col-sm-3" value = newAdminLink.Name placeholder = "Name"}} 
+                   {{input class="form-control col-sm-6" value= newAdminLink.Link type = "text" placeholder = "Link"  }}                
+                    <span class="glyphicon glyphicon-plus col-sm-1"  {{action "addAdminLink" }}></span>
+              </div>
+            <br>
+           </div>
+           {{/if}}
 
-  <div class="form-group  col-sm">
-    <label>*Teams:</label>
-    {{#each model.teamId as |team|}} {{input class="form-control" type = "text" value = team.teamName readonly = (if isUserAdministrator
-    "undefined" "readonly") }} {{/each}}
-  </div>
 
-  <button type="button" class="btn btn-primary" {{action "postChanges"}}>Save Changes</button>
-  <button type="button" class="btn btn-info" {{action "discardChanges"}}>Discard Changes</button>
+          <div class="form-group ">
+              <label  class = "control-label col-sm-2" for="team">*Team Membership:</label>              
+              {{#each model.teamId as |team|}}
+              <label  class = "control-label col-sm-2" for="team"></label> 
+              <div class="col-sm-10">{{input class="form-control" name=team  type = "text" value = team.teamName  readonly = (if isUserAdministrator "undefined" "readonly")}}</div>              
+            {{/each}}   
+            </div>
+        
+            <div class="form-group"> 
+                 <div class="col-sm-offset-2 col-sm-10 btn-group ">                  
+                    <button  type = "button" class = "btn btn-secondary">
+                      <a href = "/dashboard">Cancel</a>
+                    </button>
+                  <button type="button" class="btn btn-primary pull-right" {{action "postChanges"}}>Save</button>                  
+                </div>
+                </div>
 
-  {{userrole}} {{userId}} {{isUserAdministrator}}
+              
+   
+    </form>
+    </div>
 
-</form>
-</div>
-
-{{outlet}}
+    {{userrole}} {{userId}} {{isUserAdministrator}} 
