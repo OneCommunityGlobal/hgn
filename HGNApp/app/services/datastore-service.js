@@ -8,14 +8,14 @@ export default Ember.Service.extend({
 
       getDashboardData() {
 
-        let url = ENV.webServer + "/dashboard";
+        let url = ENV.webServer + "/dashboard1";
         let data = null;
         let method = "get";
 
         let request = this.createEmberrequestObject(url, data, method);
         return request;
 
-      
+
       },
 
       getUserProfileData(requestor) {
@@ -43,7 +43,7 @@ export default Ember.Service.extend({
             "url" : url,
             "data" : data,
             "method" : method,
-            "dataType": "JSON",           
+            "dataType": "JSON",
              beforeSend: function (xhr) {
               xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY));
             }
