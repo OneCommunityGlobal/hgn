@@ -8,11 +8,9 @@ export default Ember.Service.extend({
 
       getDashboardData(requestor) {
 
-<<<<<<< HEAD
-        let url = ENV.webServer + "/dashboard1";
-=======
+
         let url = ENV.webServer + "/dashboard1/" + requestor.requestorId;
->>>>>>> ee5995e8b3739685d9173ecdae6762ad50f0c42a
+
         let data = null;
         let method = "get";
 
