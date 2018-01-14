@@ -5,7 +5,9 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin, {
 
   model(){
 
-   return this.get('DataService').getDashboardData();
+   return this.get('AuthService').getLoggedinUser()
+   .then(results => {this.get('DataService').getDashboardData(results);});
+   
   },
 
   setupController: function(controller, model){

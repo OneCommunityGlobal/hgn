@@ -6,9 +6,9 @@ export default Ember.Service.extend({
 
     self: this,
 
-      getDashboardData() {
+      getDashboardData(requestor) {
 
-        let url = ENV.webServer + "/dashboard";
+        let url = ENV.webServer + "/dashboard1/" + requestor.requestorId;
         let data = null;
         let method = "get";
 

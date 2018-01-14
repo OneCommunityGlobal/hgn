@@ -41,11 +41,14 @@
          {{/each}}
 
          <div class="form-group  ">            
-             <div class ="form-inline" >                 
+             <div class ="" >                 
                  <label  class = "control-label col-sm-2">New Personal Link:</label>
                  {{input  class = "form-control col-sm-3" value = newPersonalLink.Name placeholder = "Name"}} 
-                {{input class="form-control col-sm-6" value= newPersonalLink.Link type = "text" placeholder = "Link"  }}                
+                 {{display-errors errors = errors.newPersonalLink.Name showErrors= showFormErrors}}
+                {{input class="form-control col-sm-6" value= newPersonalLink.Link type = "text" placeholder = "Link"  }}
+                {{display-errors errors = errors.newPersonalLink.Link showErrors= showFormErrors}}                
                  <span class="glyphicon glyphicon-plus col-sm-1"  {{action "addPersonalLink" }}></span>
+                 
            </div>
          <br>
         </div>

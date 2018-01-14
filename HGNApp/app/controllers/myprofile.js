@@ -7,6 +7,7 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
 
   self: this,
   showErrors : true,
+  showFormErrors: false,
   newPersonalLink: {
     Name: "",
     Link: ""
@@ -40,18 +41,22 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
 
     addPersonalLink() {
 
-      let newLink = this.get('newPersonalLink');
-
-      if (newLink.Name.length < 1 || newLink.Link.length < 1) {
-
-      } else {
-        this.get('model.personalLinks').addObject(newLink);
-
-        this.set('newPersonalLink', {});
-      }
-
-
+      alert(this.model);
+   
+     this.validate()
+     .then(function(results) {
+       alert(results);
+      this.get('model.personalLinks').addObject(this.get('newPersonalLink'));
+      this.set('newPersonalLink', {});
+     })
+     .catch((errors) => {
+       console.log(errors);
+      this.set('showFormErrors' , true);
+     });
+   
     },
+    
+
     removePersonalLink(personallink) {
       this.get('model.personalLinks').removeObject(personallink);
     },
