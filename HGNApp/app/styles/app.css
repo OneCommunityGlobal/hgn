@@ -113,9 +113,9 @@
     padding: 30px;
     height: 500px;
     overflow-y: scroll;
-  
+
   }
-  
+
   .task-update button{
     color: black;
   }
@@ -593,6 +593,3 @@ template {
 [hidden] {
   display: none;
 }
-
-
-
