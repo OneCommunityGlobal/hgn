@@ -27,7 +27,7 @@ export default Ember.Component.extend(ChartMixin, {
     .attr('class', 'bar-chart__bar')
     .attr('y', function(d) {
       return y(d.name);
-    })
+    });
     /*
     .attr('height', y.bandwidth() / 2)
     .attr('x', function() {
@@ -42,8 +42,8 @@ export default Ember.Component.extend(ChartMixin, {
     .attr('tooltip', function(d){
       return d.value;
       */
-    });
+    }});
 
-}
+// }
 
-});
+// });

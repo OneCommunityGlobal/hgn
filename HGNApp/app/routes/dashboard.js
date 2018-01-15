@@ -2,10 +2,6 @@ import Ember from 'ember';
 import UnAuthenticatedRouteMixin from '../mixins/un-authenticated-route-mixin';
 
 export default Ember.Route.extend(UnAuthenticatedRouteMixin, {
-<<<<<<< HEAD
-//Testing My changes
-=======
->>>>>>> ee5995e8b3739685d9173ecdae6762ad50f0c42a
 
   model(){
 
