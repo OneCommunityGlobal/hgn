@@ -3,19 +3,15 @@ import UnAuthenticatedRouteMixin from '../mixins/un-authenticated-route-mixin';
 
 export default Ember.Route.extend(UnAuthenticatedRouteMixin, {
 
-  model(){
-
-   return this.get('AuthService').getLoggedinUser()
-   .then(results => {this.get('DataService').getDashboardData(results);});
-   
-  },
+  model(){  
+     return this.get('DataService').getDashboardData(this.loggedinUser);
+    },
 
   setupController: function(controller, model){
     this._super(...arguments);
 
     controller.set('model', model);
-    this.get('AuthService').getLoggedinUser()
-   .then(results => this.get('DataService').getUserProfileData(results))
+    this.get('DataService').getUserProfileData(this.loggedinUser)
    .then(function(results){controller.set('userProfile', results);});
 
   },
