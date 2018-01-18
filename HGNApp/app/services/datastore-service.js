@@ -4,64 +4,69 @@ import ENV from '../config/environment';
 
 export default Ember.Service.extend({
 
-    self: this,
+  self: this,
 
-      getDashboardData() {
+  getDashboardData() {
 
-        let url = ENV.webServer + "/dashboard";
-        let data = null;
-        let method = "get";
+    let url = ENV.webServer + "/dashboard";
+    let data = null;
+    let method = "get";
 
-        let request = this.createEmberrequestObject(url, data, method);
-        return request;
+    let request = this.createEmberrequestObject(url, data, method);
+    return request;
 
 
-      },
+  },
 
-      getUserProfileData(requestor) {
+  getUserProfileData(requestor) {
 
-        let url = ENV.webServer + "/userprofile/"+  requestor.requestorId;
-        let data = "";
-        let method = "get";
+    let url = ENV.webServer + "/userprofile/" + requestor.requestorId;
+    let data = "";
+    let method = "get";
 
-        let request = this.createEmberrequestObject(url, data, method);
-        return request;
+    let request = this.createEmberrequestObject(url, data, method);
+    return request;
 
-      },
-      saveUserProfileData(user, userId) {
+  },
+  saveUserProfileData(user, userId) {
 
-        let url = ENV.webServer + "/userprofile/" + userId;
-        let data = user;
-        let method = "put";
+    let url = ENV.webServer + "/userprofile/" + userId;
+    let data = user;
+    let method = "put";
 
-        let request = this.createEmberrequestObject(url, data, method);
-        return request;
-      },
+    let request = this.createEmberrequestObject(url, data, method);
+    return request;
+  },
 
-      getProjectData(){
-        //TODO
-      },
+  getProjectData() {
+    let url = ENV.webServer + "/projects" ;
+    let data = "";
+    let method = "get";
 
-      saveProjectData(project, projectId){
-        let url = ENV.webServer + "/projects/" + projectId;
-        let data = project;
-        let method = "put";
+    let request = this.createEmberrequestObject(url, data, method);
+    return request;
+  },
 
-        let request = this.createEmberrequestObject(url, data, method);
-        return request;
-      },
+  saveProjectData(project, projectId) {
+    let url = ENV.webServer + "/projects" ;
+    let data = project;
+    let method = "put";
 
-      createEmberrequestObject(url, data, method) {
-        return Ember.$.ajax({
-            "url" : url,
-            "data" : data,
-            "method" : method,
-            "dataType": "JSON",
-             beforeSend: function (xhr) {
-              xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY));
-            }
-          });
+    let request = this.createEmberrequestObject(url, data, method);
+    return request;
+  },
 
-        }
+  createEmberrequestObject(url, data, method) {
+    return Ember.$.ajax({
+      "url": url,
+      "data": data,
+      "method": method,
+      "dataType": "JSON",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY));
+      }
+    });
 
-      });
+  }
+
+});
