@@ -19,11 +19,14 @@ export default Ember.Mixin.create({
     setupController: function(controller, model){
 
       controller.set('model', model);
-      return this.get('AuthService').getLoggedinUser()
-      .then(function(results){
-        controller.set('userrole', results.role);
-        controller.set('userId', results.requestorId);
-        });
+      controller.set('userrole', this.loggedinUser.role);
+      controller.set('userId', this.loggedinUser.requestorId);
+      //   controller.set('userId', results.requestorId);
+      // return this.get('AuthService').getLoggedinUser()
+      // .then(function(results){
+      //   controller.set('userrole', results.role);
+      //   controller.set('userId', results.requestorId);
+      //   });
       
     }
 });
