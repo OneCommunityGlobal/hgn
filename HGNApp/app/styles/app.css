@@ -9,7 +9,7 @@
   overflow-y: auto;
 }
 
-/*Header styles*/
+/*Header styles try changes*/
 .badge-notify {
   position: relative;
   /*top: 10px;*/
@@ -113,9 +113,9 @@
     padding: 30px;
     height: 500px;
     overflow-y: scroll;
-  
+
   }
-  
+
   .task-update button{
     color: black;
   }
@@ -593,10 +593,3 @@ template {
 [hidden] {
   display: none;
 }
-
-.btn
-{
-  width: 20%;
-  
-}
-

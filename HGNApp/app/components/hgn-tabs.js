@@ -6,7 +6,7 @@ export default Ember.Component.extend(ChartMixin, {
   drawData: function() {
    // var color = '#FDFEFE';
     var data = this.get('data');
-  
+
     //var height = this.get('chartHeight');
     //var width = this.get('chartWidth');
     var svg = this.get('chartSVG');
@@ -27,7 +27,8 @@ export default Ember.Component.extend(ChartMixin, {
     .attr('class', 'bar-chart__bar')
     .attr('y', function(d) {
       return y(d.name);
-    })
+    });
+    /*
     .attr('height', y.bandwidth() / 2)
     .attr('x', function() {
       return 0;
@@ -40,8 +41,9 @@ export default Ember.Component.extend(ChartMixin, {
     })
     .attr('tooltip', function(d){
       return d.value;
-    });
+      */
+    }});
 
-}
+// }
 
-});
+// });

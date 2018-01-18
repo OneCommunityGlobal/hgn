@@ -4,7 +4,7 @@
     <div class="col-md-3" >
       <div class="col-md-12" >
            {{ hgn-profilebox 
-         firstName=userProfile.firstName lastName = userProfile.lastName role=userProfile.role 
+         firstName=model.userSnapshot.firstName lastName = model.userSnapshot.lastName role=model.userSnapshot.role 
          logo="https://addons.cdn.mozilla.net/static//img/zamboni/anon_user.png"
          MyProfile = (action 'MyProfile')
          }}
@@ -12,7 +12,7 @@
       </div>
       <div class="col-md-12" >
         <a href="/profile" style="text-decoration:none; color: black;">
-          {{hgn-badges title="UserName" role="Administrator" }}
+          {{hgn-badges title="UserName" role=model.userSnapshot.role }}
         </a>
       </div>
     </div>

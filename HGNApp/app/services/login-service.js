@@ -34,6 +34,7 @@ export default Ember.Service.extend({
      return Ember.$.ajax({
       url : this.host + "/login" ,
       type: "GET",
+      cache: "true",
       beforeSend: function(xhr){xhr.setRequestHeader("Authorization", localStorage.getItem(ENV.TOKEN_KEY) );}
     });    
 
