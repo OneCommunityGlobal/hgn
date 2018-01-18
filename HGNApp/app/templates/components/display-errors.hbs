@@ -1,7 +1,14 @@
 {{#if showErrors}}
 
 {{#each errors as |error|}}
-<p style= "color: red">{{error}}</p>
+
+<div class="col-sm-2">
+    <small id="passwordHelp" class="text-danger">
+      {{error}}
+    </small>      
+  </div>
+
+<!--<span style= "color: red">{{error}}</span> -->
 {{/each}}
 {{/if}}
 {{yield}}
