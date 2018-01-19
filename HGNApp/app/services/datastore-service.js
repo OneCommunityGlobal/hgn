@@ -41,7 +41,7 @@ export default Ember.Service.extend({
   },
 
   getProjectData() {
-    let url = ENV.webServer + "/projects" ;
+    let url = ENV.webServer + "/project" ;
     let data = "";
     let method = "get";
 
