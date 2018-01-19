@@ -16,6 +16,7 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
     Name: "",
     Link: ""
   },
+  newLinkformValidate : false,
 
   isUserAdministrator: Ember.computed('userrole', function () {
 
@@ -32,30 +33,39 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
 
       this.validate()
         .then(() => {
-          this.get('DataService').saveUserProfileData(user, userId)
+                this.get('DataService').saveUserProfileData(user, userId)
             .then(alert("Saved"));
         })
-        .catch(console.log(this.get("errors")));
+        .catch(
+          (errors) => {
+          alert("error"); 
+        console.log(errors);});
 
     },
 
     addPersonalLink() {
+      
+      this.set('newLinkformValidate' ,true);
 
-      alert(this.model);
-   
      this.validate()
-     .then(function(results) {
-       alert(results);
-      this.get('model.personalLinks').addObject(this.get('newPersonalLink'));
-      this.set('newPersonalLink', {});
+     .then(() => {
+       this.get('model.personalLinks').addObject(this.get('newPersonalLink'));
+       this.set('newPersonalLink', {});
+       this.set('newLinkformValidate' ,false);
      })
-     .catch((errors) => {
-       console.log(errors);
-      this.set('showFormErrors' , true);
-     });
+     .catch(() => {
+           this.set('showFormErrors' , true);
+     })
+     
+     ;
    
     },
-    
+
+    CancelAddingPersonalLink()
+{
+  this.set('newLinkformValidate' ,false);
+  this.set('newPersonalLink', {});
+},
 
     removePersonalLink(personallink) {
       this.get('model.personalLinks').removeObject(personallink);
