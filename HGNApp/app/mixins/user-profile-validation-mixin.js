@@ -26,16 +26,7 @@ export default Ember.Mixin.create(EmberValidations, {
       inclusion: { in: ['Volunteer', 'Manager', 'Administrator', 'Core Team']
       }
     },
-    "model.userName": {
-      presence: true
-    },
-    "model.password": {
-      presence: true,
-      length: {
-        minimum: 8
-      }
-    },
-    "model.isActive": {
+     "model.isActive": {
       inlcusion: { in: [true, false]
       }
     },
@@ -45,11 +36,12 @@ export default Ember.Mixin.create(EmberValidations, {
         greaterThanOrEqualTo: 0
       }
     },
+ 
     "newPersonalLink.Name": {
-        presence: true, length: {minimum:1}      
+        presence: {if :'newLinkformValidate' } 
     },
     "newPersonalLink.Link": {
-        presence: true, length: {minimum:1}      
+      presence: {if :'newLinkformValidate' }    
     }
   }
 });

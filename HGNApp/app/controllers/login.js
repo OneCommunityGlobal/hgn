@@ -7,11 +7,11 @@ export default Ember.Controller.extend({
   actions: {
     login() {
 
-      let userName = this.get('userName');
+      let email = this.get('email');
       let password = this.get('password');
       let self = this;
       let logindata = {
-        "userName": userName,
+        "email": email,
         "password": password
       };
 
