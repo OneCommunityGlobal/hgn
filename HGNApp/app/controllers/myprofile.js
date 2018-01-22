@@ -33,8 +33,9 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
 
       this.validate()
         .then(() => {
-                this.get('DataService').saveUserProfileData(user, userId)
-            .then(alert("Saved"));
+                this.get('userProfileService').editUserProfileData(user, userId)
+                .then(alert ("Saved"))
+                .catch((error) => {alert(error);})  ;       
         })
         .catch(
           (errors) => {

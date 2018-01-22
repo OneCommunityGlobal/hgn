@@ -1,10 +1,11 @@
 <div class="container">
-  <form class="form-horizontal .myprofile">
+  <form class="form-horizontal .myprofile"enctype="multipart/form-data">
 
     
       <div class="form-group ">
         <label class="control-label col-sm-2" for="firstName">*First Name:</label>
         <div class="col-sm-4">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
+       <img src = {{model.profilePic}} alt = "profilePic">
         {{display-errors errors = errors.model.firstName showErrors= showErrors}}
       </div>
 
