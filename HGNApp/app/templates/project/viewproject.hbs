@@ -1,0 +1,8 @@
+{{outlet}}
+
+<div>Project Name: {{model.projectName}}</div>
+<div>Active status: {{model.isActive}}</div>
+<div>tasks</div>
+{{#each model.tasks as |task|}}
+<div><small>{{task.Description}}</small></div>
+{{/each}}
