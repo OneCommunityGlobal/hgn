@@ -1,14 +1,14 @@
 <div class="container">
-  
+
     <div class="row">
     <div class="col-md-3" >
       <div class="col-md-12" >
-           {{ hgn-profilebox 
-         firstName=model.userSnapshot.firstName lastName = model.userSnapshot.lastName role=model.userSnapshot.role 
+           {{ hgn-profilebox
+         firstName=model.userSnapshot.firstName lastName = model.userSnapshot.lastName role=model.userSnapshot.role
          logo="https://addons.cdn.mozilla.net/static//img/zamboni/anon_user.png"
          MyProfile = (action 'MyProfile')
          }}
-        
+
       </div>
       <div class="col-md-12" >
         <a href="/profile" style="text-decoration:none; color: black;">
@@ -29,7 +29,7 @@
         <div class="panel panel-default" style="height:350px;background-color:#FFCCBC;text-align:center">
           <div class="panel-heading" style="font: bold; color: #FDFEFE;background-color: #DC7633">Leaderboard</div>
           <div class="panel-body" style="padding:0px">
-            {{hgn-tabs data=model.barChart}}
+            {{hgn-tabs data=model.leaderboard}}
             <!-- {{hgn-tabs model=model.LeaderboardWeekData data="hi"}} -->
           </div>
         </div>
