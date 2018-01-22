@@ -13,22 +13,34 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form class="form-horizontal">
               <div class="form-group form-inline">
-                <label for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=projectName }}
+                <label class="control-label col-sm-2" for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=projectName }}
               </div>
               <div class="form-group form-inline">
-                <label for="tasks">Tasks</label> {{input class="form-control required" id="taskName" type="text" placeholder="Enter task" value=taskName }}
-                <button class="btn" type="button"><span class="glyphicon glyphicon-plus"></span>
-                  </button>
+                <label for="tasks">Tasks: </label>
+              {{#each model.tasks as |task|}}
+                {{task}}
+              {{/each}}
+              <button class="btn" type="button" {{action 'addNewTask'}}><span class="glyphicon glyphicon-plus"></span>
+              </button>
+              {{#if addTask }}
+              <div>
+                {{input class="form-control required" id="taskName" type="text" placeholder="Enter task" value=newTask }}
+              </div>
+              {{/if}}
+
               </div>
               <div>
-                <label class="radio-inline">
-                  <input type="radio" name="optradio">Active
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="optradio">Inactive
-                </label>
+                <label>
+                {{radio-button value="true" groupValue="isActive" changed="isActiveToggled"}}
+                active
+              </label>
+              <label>
+                {{radio-button value="false" groupValue="isActive" changed="isActiveToggled"}}
+                inactive
+              </label>
+
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" {{action 'addProject'}} {{bind-attr disabled=disabled}} data-dismiss="modal">Add Project</button>
@@ -44,9 +56,7 @@
     <div class="card">
       <div class="card-block">
         <div class="card-subtitle mb-2 text-muted list-group list-group-flush">
-          {{#each model.projectName as |project|}}
-            {{ project }}
-          {{/each}}
+            {{ projectName }}
         </div>
       </div>
     </div>
