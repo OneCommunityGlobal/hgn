@@ -6,7 +6,7 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin, {
 
     model: function() {
 
-        alert("in model hook")       ;
+        //alert("in model hook");
         return this.get('projectService').getAllProjects();
 
     }

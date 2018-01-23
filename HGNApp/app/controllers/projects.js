@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   self: this,
-  newTask: "",
+  newTask: {
+    Description: ""
+  },
   addTask: false,
-  projectName: "",
+  newProjectName: "",
   isUserNotAdministrator: Ember.computed('userrole', function() {
     let userrole = this.get('userrole');
     return userrole === "Administrator" ? false : true;
@@ -16,11 +18,10 @@ export default Ember.Controller.extend({
     addNewTask() {
       this.set('addTask', true);
       this.get('model.tasks').addObject(this.get('newTask'));
-      this.set('newTask', '');
+      this.set('newTask', {});
     },
     addProject() {
-      this.get('model.projectName').addObject(this.get('projectName'));
-      this.set('model.projectName', '');
+      alert("Saved!");
     },
 
     isActiveToggled(choice){
