@@ -16,6 +16,7 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
     Name: "",
     Link: ""
   },
+  newProfilePic : "",
   newLinkformValidate : false,
 
   isUserAdministrator: Ember.computed('userrole', function () {
@@ -27,6 +28,24 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
 
   actions: {
 
+    updateProfilePic:  function(event) {
+      const reader = new FileReader();
+      const file = event.target.files[0];
+      let imageData;
+  
+      reader.onload = () => {
+        imageData = reader.result;
+        this.set('model.profilePic', imageData);
+  
+        
+      };
+  
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    },
+   
+
     postChanges() {
       let userId = this.get('userId');
       let user = this.get('model');
@@ -35,12 +54,11 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
         .then(() => {
                 this.get('userProfileService').editUserProfileData(user, userId)
                 .then(alert ("Saved"))
-                .catch((error) => {alert(error);})  ;       
+                ;       
         })
         .catch(
           (errors) => {
-          alert("error"); 
-        console.log(errors);});
+            console.log(errors);});
 
     },
 
