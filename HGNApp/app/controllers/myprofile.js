@@ -35,8 +35,7 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
   
       reader.onload = () => {
         imageData = reader.result;
-        this.set('model.profilePic', imageData);
-  
+        this.set('model.profilePic', imageData); 
         
       };
   
