@@ -35,7 +35,7 @@ export default Ember.Mixin.create({
     var data = this.get('data');
     var width = this.get('chartWidth');
     var allValues = d3.extent(data, function(d) {
-      return d.value;
+      return d.totaltime;
     });
     return d3.scaleLinear()
       .domain(allValues)

@@ -3,7 +3,7 @@ import ENV from '../config/environment';
 
 
 export default Ember.Controller.extend({
-  
+
   actions: {
     login() {
 
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
          .done(function (result) {
           localStorage.setItem(ENV.TOKEN_KEY, result);
             self.transitionToRoute('dashboard');
-        })
+        });
         // .fail(
         //   function () {
         //     self.transitionToRoute('login');
