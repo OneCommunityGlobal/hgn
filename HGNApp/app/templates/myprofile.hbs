@@ -2,12 +2,29 @@
   <form class="form-horizontal .myprofile"enctype="multipart/form-data">
 
     
-      <div class="form-group ">
+      <div class="form-group">
         <label class="control-label col-sm-2" for="firstName">*First Name:</label>
-        <div class="col-sm-4">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
-       <img src = {{model.profilePic}} alt = "profilePic">
-        {{display-errors errors = errors.model.firstName showErrors= showErrors}}
+        <div class="col-sm-4">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}
+            {{display-errors errors = errors.model.firstName showErrors= showErrors}} </div>
+       
       </div>
+
+      <div class="form-group">
+        
+        <img input id="image" type="image  " alt="Profile Picture" src={{model.profilePic}} name = profilePic/>
+
+        <input
+  multiple="true"
+ onchange ={{action "updateProfilePic"}}
+  accept="image/png,image/jpeg,application/pdf"
+  name = {{newProfilePic}}
+  type="file"
+        />
+        
+        <!--  {{input type="file" class="form-control-file" id="newProfilePic"  name = newProfilePic aria-describedby="fileHelp" }}-->
+         <button {{action "updateProfilePic"}}>Ok!!</button>
+          <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+        </div>
 
       <div class="form-group ">
         <label class="control-label col-sm-2" for="lastName">*Last Name:</label>
