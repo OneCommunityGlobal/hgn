@@ -2,12 +2,27 @@
   <form class="form-horizontal .myprofile"enctype="multipart/form-data">
 
     
-      <div class="form-group ">
+      <div class="form-group">
         <label class="control-label col-sm-2" for="firstName">*First Name:</label>
-        <div class="col-sm-4">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}</div>
-       <img src = {{model.profilePic}} alt = "profilePic">
-        {{display-errors errors = errors.model.firstName showErrors= showErrors}}
+        <div class="col-sm-4">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }}
+            {{display-errors errors = errors.model.firstName showErrors= showErrors}} </div>
+       
       </div>
+
+      <div class="form-group">
+        
+        <img input id="image" type="image  " alt="Profile Picture" src={{model.profilePic}} name = profilePic/>
+
+        <input
+  multiple="true"
+ onchange ={{action "updateProfilePic"}}
+  accept="image/png,image/jpeg"
+  name = {{newProfilePic}}
+  type="file"
+        />
+        
+        
+        </div>
 
       <div class="form-group ">
         <label class="control-label col-sm-2" for="lastName">*Last Name:</label>
