@@ -28,6 +28,9 @@ export default Ember.Controller.extend({
 
     addNewProject() {
       this.get('model').addObject(this.get('newProject'));
+      let project = this.get('newProject');
+      this.get('projectService').postProject(project)
+      .then(alert("saved"));
       this.set('newProject', {});
     },
   }

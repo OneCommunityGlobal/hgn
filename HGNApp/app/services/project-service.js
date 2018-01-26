@@ -16,11 +16,22 @@ export default Ember.Service.extend({
     return request;
   },
 
-  getProjectById(projectId)
+  getProjectById(project)
   {
     let relativePath = "/project/"+ projectId;
     let data = "";
     let method = "get";
+
+    let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
+    console.log(request);
+    return request;
+  },
+
+  postProject(project)
+  {
+    let relativePath = "/project/";
+    let data = project;
+    let method = "post";
 
     let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
     console.log(request);
