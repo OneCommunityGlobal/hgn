@@ -16,7 +16,7 @@ export default Ember.Service.extend({
     return request;
   },
 
-  getProjectById(project)
+  getProjectById(projectId)
   {
     let relativePath = "/project/"+ projectId;
     let data = "";
