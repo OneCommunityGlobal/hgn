@@ -3,31 +3,33 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   self: this,
-  newTask: {
+
+  newProject: {
+    projectName : "",
+    tasks: [],
+    isActive: true
+  },
+  task: {
     Description: ""
   },
-  addTask: false,
-  newProjectName: "",
   isUserNotAdministrator: Ember.computed('userrole', function() {
     let userrole = this.get('userrole');
     return userrole === "Administrator" ? false : true;
   }),
 
   actions: {
-
     addNewTask() {
-      this.set('addTask', true);
-      this.get('model.tasks').addObject(this.get('newTask'));
-      this.set('newTask', {});
+      this.get('newProject.tasks').addObject(this.get('task'));
+      this.set('task', {});
     },
-    addProject() {
-      alert("Saved!");
+    cancelTask(task) {
+      this.get('newProject.tasks').removeObject(task);
     },
 
-    isActiveToggled(choice){
-      console.log(choice);
-      this.set('model.isActive', choice);
-    }
+    addNewProject() {
+      this.get('model').addObject(this.get('newProject'));
+      this.set('newProject', {});
+    },
   }
 
 });
