@@ -1,0 +1,53 @@
+{{outlet}}
+<div class="container">
+    <button class="btn" type="button" data-toggle="modal" data-target="#newUserModal"> <span class="glyphicon glyphicon-plus"></span>Create New User</button>
+
+    <label>show:</label>
+    <select onchange={{action "setSelection" value="target.value" }}>
+        <option selected value="all">All</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+        </select> 
+    
+    <div class="modal fade" id="newUserModal" role="dialog">
+        <div class="modal-dialog">
+            <form name="createUser" {{action 'save' on='submit' }}>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                        <h4 class="modal-title">Create New User</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span>FirstName:</span>{{input type="text" class="form-control" value=firstName }}
+                        <span>LastName:</span>{{input type="text" class="form-control" value=lastName }}
+                        <span>Email:</span>{{input type="text" class="form-control" value=email }}
+                        <span>Password:</span>{{input type="text" class="form-control" value=pwd}}
+                        <span>Role:</span>{{input type="text" class="form-control" value=role }}
+                        <span>Phone:</span>{{input type="text" class="form-control" value=phone }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>

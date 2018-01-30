@@ -11,7 +11,9 @@
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/timelog">Projects</a></li>
         <li><a href="/reports">Reports</a></li>
-        <li ><a href="/usermanagement">User Management</a></li>
+        {{#if isUserAdministrator}}
+        <li ><a href="/usermanagement">User Management</a></li> 
+        {{/if}} 
       </ul>
       <form class="navbar-form navbar-left" style="margin:0px" role="search">
         <div class="form-group">

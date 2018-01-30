@@ -6,7 +6,7 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin,{
 
   model(params) {
 
-    
+
    return this.get('projectService').getProjectById(params.projectId);
   }
 });

@@ -13,25 +13,33 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form class="form-horizontal">
               <div class="form-group form-inline">
-                <label for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=projectName }}
+                <label class="control-label col-sm-2" for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=newProject.projectName }}
               </div>
               <div class="form-group form-inline">
-                <label for="tasks">Tasks</label> {{input class="form-control required" id="taskName" type="text" placeholder="Enter task" value=taskName }}
-                <button class="btn" type="button"><span class="glyphicon glyphicon-plus"></span>
-                  </button>
+                <label class="control-label col-sm-2" for="tasks">Tasks: </label>
+                {{#each newProject.tasks as |task|}}
+                  {{task.Description}}
+                  <button class="btn" type="button" {{action 'cancelTask'}}><span class="glyphicon glyphicon-minus"></span>
+                </button>
+                {{/each}}
+                {{input class="form-control required" type="text" placeholder="Enter task" value=task.Description }}
+                <button class="btn" type="button" {{action 'addNewTask'}}><span class="glyphicon glyphicon-plus"></span>
+              </button>
+                <button class="btn" type="button" {{action 'cancelTask'}}><span class="glyphicon glyphicon-minus"></span>
+            </button>
               </div>
               <div>
-                <label class="radio-inline">
-                  <input type="radio" name="optradio">Active
-                </label>
-                <label class="radio-inline">
-                  <input type="radio" name="optradio">Inactive
-                </label>
-              </div>
+                <label>active
+              <input type='radio' name='isActive' checked={{newProject.isActive}} onclick={{action (mut newProject.isActive) true}} />
+            </label>
+            <label>inactive
+              <input type='radio' name='isActive' checked={{newProject.isActive}} onclick={{action (mut newProject.isActive) false}} />
+            </label>
+            </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" {{action 'addProject'}} {{bind-attr disabled=disabled}} data-dismiss="modal">Add Project</button>
+                <button type="submit" class="btn btn-primary" {{action 'addNewProject'}} {{bind-attr disabled=disabled}} data-dismiss='modal'>Add Project</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </form>
@@ -43,11 +51,17 @@
     <!-- List of Projects -->
     <div class="card">
       <div class="card-block">
-        <div class="card-subtitle mb-2 text-muted list-group list-group-flush">
-          {{#each model.projectName as |project|}}
-            {{ project }}
+        <h4 class="card-title mb-2 text-muted list-group list-group-flush">
+          {{#each model as |project|}}
+
+           <li>
+              <!--   {{#link-to "project.viewproject" project._id }}{{/link-to}}-->{{project.projectName}}
+              {{#each project.tasks as |task|}}
+                <p><small>{{task.Description}}</small></p>
+              {{/each}}
+            </li>
           {{/each}}
-        </div>
+        </h4>
       </div>
     </div>
   </div>

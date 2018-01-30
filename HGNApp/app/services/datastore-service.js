@@ -18,7 +18,7 @@ export default Ember.Service.extend({
     return request;
 
 
-  }, 
+  },
 
   createEmberrequestObject(relativePath, data, method) {
     return Ember.$.ajax({
