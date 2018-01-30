@@ -9,7 +9,7 @@ export default Ember.Service.extend({
       getDashboardData(requestor) {
 
 
-        let relativePath =  "/dashboard1/" + requestor.requestorId;
+        let relativePath =  "/dashboard/" + requestor.requestorId;
 
         let data = null;
         let method = "get";

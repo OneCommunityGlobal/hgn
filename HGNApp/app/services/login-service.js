@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
+import jwtDecode from 'ember-jwt-decode';
 
-export default Ember.Service.extend({
+export default Ember.Service.extend({ 
 
  host: ENV.webServer,
    
@@ -20,9 +21,13 @@ export default Ember.Service.extend({
 
   isAuthenticated()
   {
-    //TODO add token expiry also
-    return (!!localStorage.getItem(ENV.TOKEN_KEY));
-
+    if(!localStorage.getItem(ENV.TOKEN_KEY))
+    {
+      return false;
+    }     
+    let token = localStorage.getItem(ENV.TOKEN_KEY);   
+    token = jwtDecode(token);
+    return (token.expiryTimestamp> new Date().toISOString() )
   },
   logout()
   {
