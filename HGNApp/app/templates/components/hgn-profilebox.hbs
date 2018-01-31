@@ -1,0 +1,35 @@
+<div class="panel" style="width:270px;height:350px;padding:0px;background-color:#1782B5" {{action "gotoMyProfile"}}>
+
+  <div class="panel-body" style="padding:0px;">
+    <table style="width:100%" class="table">
+      <tr>
+        <td height="20" style="padding:40px">
+          <!--to do : link remove-->
+          {{!--
+          <a href="/myprofile">
+            <img style="border-radius:500px;width:100%" src="{{logo}}">
+          </a> --}}
+
+          <img style="border-radius:500px;width:100%" src={{logo}}>
+        </td>
+      </tr>
+      <tr style="background-color:white;color:grey;">
+        <td style="text-align:center;">
+
+          <h4>
+            {{#if firstName}} {{firstName}} {{/if}} {{#if lastName}} {{lastName}} {{/if}}
+          </h4>
+
+        </td>
+      </tr>
+      <tr style="background-color:#E0E0E0;color:grey">
+        <td style="text-align:center;">
+          <h6>{{role}}</h6>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+{{yield}}

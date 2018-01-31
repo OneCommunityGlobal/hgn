@@ -1,0 +1,31 @@
+{{yield}}
+
+
+{{#each model.projectList as |project|}}
+  <div class="listItem" id="project{{project.id}}">
+    {{project.name}}
+  </div>
+{{/each}}
+
+<style>
+  .listItem {
+    text-align: left;
+    cursor: pointer;
+    color: black;
+    padding: 10px;
+  }
+
+  .listItem-selected {
+    text-align: left;
+    cursor: pointer;
+    color: white;
+    padding: 10px;
+    background-color: #5590CC;
+
+  }
+
+  .listItem:hover {
+    background-color: #5590CC;
+    color: white;
+  }
+</style>
