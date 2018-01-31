@@ -22,42 +22,20 @@ You will need the following things properly installed on your computer.
 
 * `git clone <repository-url>` this repository
 * change into the new directory
+* navigate to HGNApp folder
 * `npm install`
 * `bower install`
+* In a separate terminal navigate to HGNRest folder
+* `npm install` 
 
-## Running / Development
-* start and connect to MongoDB.
-   *change to the directory where MongoDB is installed
-    - mongod
-    - mongo
-* start node server
-   *change to the directory ../hgn/HGNREST
-    - node server.js
-* change into the application directory
-* `ember server`
-           **NOTE:** If an error like `app.import is not a function` occurs,
-           then add the below lines to ember-fetch/index.js [of ember-simple-auth] in the included hook.
+## To start the server
 
-          ```
-          this._super.included.apply(this, arguments);
-           if (typeof app.import !== 'function' && app.app) {
-              app = app.app;
-              }
-           ```
+* @ HGNRest :`gulp` 
 
-            this may look like:
+## To start the application
 
-        ```
-        included: function(app) {
-            this._super.included.apply(this, arguments);
-              if (typeof app.import !== 'function' && app.app) {
-              app = app.app;
-              }
-             app.import('vendor/ember-fetch.js', {
-             ...
-          ```
+* @ HGNApp :`ember server` 
 
-             then do `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Code Generators
