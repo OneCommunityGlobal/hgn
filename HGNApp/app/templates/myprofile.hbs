@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form-horizontal .myprofile"enctype="multipart/form-data">
+  <form class="form-horizontal .myprofile">
 
     
       <div class="form-group">
@@ -33,7 +33,7 @@
 
     <div class="form-group ">
       <label class="control-label col-sm-2" for="bio">*Bio:</label>
-      <div class="col-sm-4">{{input class="form-control" name=bio id = "bio" type = "text" value = model.bio }}</div>
+      <div class="col-sm-4">{{textarea class="form-control" name=bio id = "bio" type = "text" value = model.bio }}</div>
       {{display-errors errors = errors.model.bio showErrors= showErrors}}
     </div>
 
