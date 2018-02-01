@@ -22,7 +22,7 @@ export default Ember.Controller.extend(UserProfileValidationMixin, {
   isUserAdministrator: Ember.computed('userrole', function () {
 
     let userrole = this.get('userrole');
-    return userrole === "Administrator" ? true : false;
+    return userrole === "Manager" ? true : false;
 
   }),
 
