@@ -39,7 +39,7 @@ export default Ember.Service.extend({
   },
 
   editProjectData(project, projectId) {
-    let relativePath = "/project";
+    let relativePath = "/project/"+ projectId;
     let data = project;
     let method = "put";
 

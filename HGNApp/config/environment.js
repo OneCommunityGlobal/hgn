@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'hgnapp',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
     webServer: "http://localhost:4500/api",
     REQUEST_AUTHKEY : "Authorization",
@@ -36,7 +36,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
+    ENV.rootURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter

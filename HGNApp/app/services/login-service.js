@@ -27,7 +27,7 @@ export default Ember.Service.extend({
     }     
     let token = localStorage.getItem(ENV.TOKEN_KEY);   
     token = jwtDecode(token);
-    return (token.expiryTimestamp> new Date().toISOString() )
+    return (token.expiryTimestamp> new Date().toISOString() );
   },
   logout()
   {
