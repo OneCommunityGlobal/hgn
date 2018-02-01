@@ -51,6 +51,7 @@
   "dependencies": {
     "bower": "^1.8.2",
     "ember-cli-less": "^1.5.5",
+    "ember-cli-test-loader": "^2.2.0",
     "ember-jwt-decode": "^0.1.0",
     "ember-radio-buttons": "^4.1.0",
     "ember-validations": "^2.0.0-alpha.5",
