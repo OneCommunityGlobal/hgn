@@ -7,34 +7,52 @@
         <option selected value="all">All</option>
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
-        </select> 
-    
+        </select>
+
     <div class="modal fade" id="newUserModal" role="dialog">
         <div class="modal-dialog">
-            <form name="createUser" {{action 'save' on='submit' }}>
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
-                        <h4 class="modal-title">Create New User</h4>
-                    </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                    <h4 class="modal-title">Create New User</h4>
+                </div>
+                <form name="createUser">
                     <div class="modal-body">
-                        <span>FirstName:</span>{{input type="text" class="form-control" value=firstName }}
-                        <span>LastName:</span>{{input type="text" class="form-control" value=lastName }}
-                        <span>Email:</span>{{input type="text" class="form-control" value=email }}
-                        <span>Password:</span>{{input type="text" class="form-control" value=pwd}}
-                        <span>Role:</span>{{input type="text" class="form-control" value=role }}
-                        <span>Phone:</span>{{input type="text" class="form-control" value=phone }}
+
+                        <div class="form-group">
+                            <label for="firstName">FirstName:</label> {{input type="text" class="form-control" value=newUser.firstName}}
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">LastName:</label> {{input type="text" class="form-control" value=newUser.lastName}}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label> {{input type="text" class="form-control" value=newUser.email}}
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label> {{input type="text" class="form-control" value=newUser.password}}
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role:</label> {{input type="text" class="form-control" value=newUser.role}}
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number:</label> {{input type="text" class="form-control" value=newUser.phoneNumber}}
+                        </div>
+                        <div class="form-group">
+                            <label for="weeklyCommittedHours">Weekly Committed Hours:</label> {{input type="text" class="form-control"
+                            value=newUser.weeklyCommittedHours}}
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-default">Save</button>
+                    <div class="modal-footer">   
+                        <button type="submit" class="btn btn-default" {{action 'saveNewUser'}} data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
+
         </div>
     </div>
-   
+
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
             <thead>
@@ -44,16 +62,18 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Role</th>
+                    <th>Weekly Committed Hours</th>
                 </tr>
             </thead>
             <tbody>
-                 {{#each model as |user|}}
+                {{#each model as |user|}}
                 <tr>
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.phoneNumber}}</td>
                     <td>{{user.role}}</td>
+                    <td>{{user.weeklyCommittedHours}}</td>
                 </tr>
                 {{/each}}
             </tbody>
