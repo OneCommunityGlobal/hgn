@@ -47,6 +47,15 @@
                 </tr>
             </thead>
             <tbody>
+                 {{#each model as |user|}}
+                <tr>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phoneNumber}}</td>
+                    <td>{{user.role}}</td>
+                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
