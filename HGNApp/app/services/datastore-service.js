@@ -20,6 +20,18 @@ export default Ember.Service.extend({
 
   },
 
+  getUnreadNotifications(requestorId)
+  {
+    let relativePath =  "/actionItem/user/" + requestorId;
+
+        let data = null;
+        let method = "get";
+
+    let request = this.createEmberrequestObject(relativePath, data, method);
+    return request;
+
+  },
+
   createEmberrequestObject(relativePath, data, method) {
     return Ember.$.ajax({
       "url": ENV.webServer + relativePath,
