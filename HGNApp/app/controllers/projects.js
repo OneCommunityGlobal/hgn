@@ -33,6 +33,15 @@ export default Ember.Controller.extend({
       .then(alert("saved"));
       this.set('newProject', {});
     },
+    destroyProject(project) {
+      this.get('model').removeObject(project);
+      this.get('projectService').deleteProject(project)
+      .then(alert("deleted"));
+    },
+    editProject(project) {
+      this.get('projectService').editProjectData(project)
+      .then(alert("saved"));
+    }
   }
 
 });
