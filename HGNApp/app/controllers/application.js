@@ -12,14 +12,14 @@ export default Ember.Controller.extend({
     return userrole === "Administrator" ? true : false;
   }),
 
-  notifications : Ember.computed('userId', function(){
+ 
+  actions: {
 
-   let userid = this.get('userId')
-   alert(this.get('userId'));
-    return this.get('DataService').getUnreadNotifications(userid);
-    
-
-  })
+    gotoTimeLog()
+    {
+      alert("controller action");
+    }
+  }
 
 
 }

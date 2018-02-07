@@ -20,12 +20,24 @@ export default Ember.Service.extend({
 
   },
 
-  getUnreadNotifications(requestorId)
+  getUnreadNotifications(requestor)
   {
-    let relativePath =  "/actionItem/user/" + requestorId;
+    let relativePath =  "/actionItem/user/" + requestor.requestorId;
 
         let data = null;
         let method = "get";
+
+    let request = this.createEmberrequestObject(relativePath, data, method);
+    return request;
+
+  },
+
+  deleteNotifications(id)
+  {
+    let relativePath =  "/actionItem/" + id;
+
+        let data = null;
+        let method = "delete";
 
     let request = this.createEmberrequestObject(relativePath, data, method);
     return request;
