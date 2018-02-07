@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   }),
 
   isUserAdministrator: Ember.computed('userrole', function () {
-    let userrole = this.get('userrole');  
+    let userrole = this.get('userrole');
     return userrole === "Administrator" ? true : false;
   }),
 
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
    let userid = this.get('userId')
    alert(this.get('userId'));
     return this.get('DataService').getUnreadNotifications(userid);
-    
+
 
   })
 
