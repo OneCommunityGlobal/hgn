@@ -20,7 +20,20 @@ export default Ember.Service.extend({
 
   },
 
-  getUnreadNotifications(requestor)
+
+
+  createActionItem(actionItem)
+  {
+    let relativePath =  "/actionItem" ;
+
+        let data = actionItem;
+        let method = "post";
+
+    let request = this.createEmberrequestObject(relativePath, data, method);
+    return request;
+
+  },
+  getActionItems(requestor)
   {
     let relativePath =  "/actionItem/user/" + requestor.requestorId;
 
@@ -31,10 +44,47 @@ export default Ember.Service.extend({
     return request;
 
   },
-
-  deleteNotifications(id)
+  
+  editActionItem(actionItem)
   {
-    let relativePath =  "/actionItem/" + id;
+    let relativePath =  "/actionItem/" + actionItem._id;
+
+    let data = actionItem;
+    let method = "put";
+
+let request = this.createEmberrequestObject(relativePath, data, method);
+return request;
+
+  },
+
+  deleteActionItem(actionItemId)
+  {
+    let relativePath =  "/actionItem/"+ actionItemId ;
+
+        let data = null;
+        let method = "delete";
+
+    let request = this.createEmberrequestObject(relativePath, data, method);
+    return request;
+
+  },
+
+
+  getUnreadNotifications(requestor)
+  {
+    let relativePath =  "/notification/user/" + requestor.requestorId;
+
+        let data = null;
+        let method = "get";
+
+    let request = this.createEmberrequestObject(relativePath, data, method);
+    return request;
+
+  },
+
+  deleteNotification(id)
+  {
+    let relativePath =  "/notification/" + id;
 
         let data = null;
         let method = "delete";

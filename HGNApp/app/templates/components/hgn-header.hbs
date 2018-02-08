@@ -40,19 +40,19 @@
         <li class="nav-item navbar-text">
            <span class="glyphicon glyphicon-bell"></span>
             <span class="badge badge-notify" {{action "readNotification"}}>{{notifications.length}}</span>
-           
-            {{#if showNotifications}}
+{{!--            
+             {{#if showNotifications}}
             <div class="alert alert-info" role="alert">
               <ul>
                 {{#each notifications as |notification|}}
-                <li class = "alert-li">{{notification.description}} 
+                <li class = "alert-li">{{notification.message}} 
                   <button class = "btn-danger btn-xs "{{action "deleteNotification" notification}}>Mark Read</button>
                   
                   </li>
                 {{/each}}
               </ul>
             </div>
-            {{/if}}
+            {{/if}}  --}}
          
         </li>
 

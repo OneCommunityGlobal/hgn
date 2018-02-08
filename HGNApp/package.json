@@ -55,6 +55,7 @@
     "ember-cli-test-loader": "^2.2.0",
     "ember-jwt-decode": "^0.1.0",
     "ember-radio-buttons": "^4.1.0",
+    "ember-truth-helpers": "^2.0.0",
     "ember-validations": "^2.0.0-alpha.5",
     "package.json": "^2.0.1"
   }
