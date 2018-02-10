@@ -12,6 +12,14 @@ export default Ember.Controller.extend({
     return userrole === "Administrator" ? true : false;
   }),
 
+  actions: {
+
+
+    readNotification()
+    {
+      this.transitionToRoute('mynotifications');
+    }
+  }
 
 
 }

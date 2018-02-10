@@ -14,9 +14,9 @@ export default Ember.Route.extend( {
        let user = this.get('loggedinUser');
         this.get('DataService').getUnreadNotifications(user)
         .then(results => { controller.set('notifications', results);});
-        controller.set('loggedinUser', this.loggedinUser);      
-     
-        
-      }
+        controller.set('loggedinUser', this.loggedinUser);    
+      },
+
+    
     
 });

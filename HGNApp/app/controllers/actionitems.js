@@ -26,9 +26,13 @@ export default Ember.Controller.extend({
         {
             
             this.get('DataService').createActionItem(this.get('newactionitem'))
-            .then(results => {
-                this.get('model').addObject(results);  
-                this.set('newactionitem', {})              
+            .then(result => {
+                console.log(result);
+                if(result.createdBy === "Self"){
+                this.get('model').addObject(result);
+                };
+                this.set('newactionitem', {});
+
       
             });
 

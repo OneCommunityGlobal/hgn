@@ -1,12 +1,8 @@
-
- <nav class="navbar  navbar-toggleable-xs  navbar-inverse " role="navigation"> 
-     <div class="container">
+<div class="container">
+ <nav class="navbar navbar-expand-lg navbar-toggleable-md  navbar-inverse " role="navigation"> 
+     
      <div class = "navbar-header">
-       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+   
       <a class="navbar-brand" href="/dashboard">
         <span class="logo">Time Tracking Tool</span>
       </a> 
@@ -39,21 +35,7 @@
      
         <li class="nav-item navbar-text">
            <span class="glyphicon glyphicon-bell"></span>
-            <span class="badge badge-notify" {{action "readNotification"}}>{{notifications.length}}</span>
-{{!--            
-             {{#if showNotifications}}
-            <div class="alert alert-info" role="alert">
-              <ul>
-                {{#each notifications as |notification|}}
-                <li class = "alert-li">{{notification.message}} 
-                  <button class = "btn-danger btn-xs "{{action "deleteNotification" notification}}>Mark Read</button>
-                  
-                  </li>
-                {{/each}}
-              </ul>
-            </div>
-            {{/if}}  --}}
-         
+            <span class="badge badge-notify" {{action "readNotification"}}>{{notifications.length}}</span>        
         </li>
 
         <li class="nav-item navbar-text">
@@ -67,6 +49,7 @@
       </ul>
     </div>
     <!-- /.navbar-collapse -->
- </div>
+
 </nav>
+ </div>
  

@@ -1,0 +1,18 @@
+<div class = "container">
+<div class = "row">
+{{#each model as |notification|}}
+
+        <div class = "col-sm-4">
+<div class="card mb-3 {{action-items-helper notification}} ">
+     <h3 class="card-header">{{notification.eventType}}</h3>
+   <div class="card-block">
+    
+    <p class="card-text">{{notification.message}}</p>
+    <a href="#" class="btn btn-primary" {{action "deleteNotification" notification}}>Mark as Read</a>
+  </div>
+</div>
+</div>
+
+{{/each}}
+</div>
+</div>
