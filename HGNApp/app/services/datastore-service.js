@@ -57,9 +57,9 @@ return request;
 
   },
 
-  deleteActionItem(actionItemId)
+  deleteActionItem(actionItem)
   {
-    let relativePath =  "/actionItem/"+ actionItemId ;
+    let relativePath =  "/actionItem/"+ actionItem._id ;
 
         let data = null;
         let method = "delete";

@@ -1,12 +1,12 @@
 <div class = "col-xs-12">
-<div class="panel panel-info " >
-  <div class="panel-heading">
-   <h4 class="panel-title">Notifications
+<div class="card card-outline-primary mb-3" >
+  <div class="card-header">
+   <h4 class="card-title">Notifications
       <a class = "pull-right" data-toggle="collapse" data-target="#notifications" > <span class = "glyphicon glyphicon-chevron-right" > </span> </a>
     </h4> 
       
   </div>
-  <div class="panel-body collapse" id = "notifications">
+  <div class="card-block collapse" id = "notifications">
     <div class="list-group">
       {{#each notifications as |notification|}}
       <li class="list-group-item">{{notification.message}}
