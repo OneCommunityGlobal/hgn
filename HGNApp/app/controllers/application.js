@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
     readNotification()
     {
-      this.transitionToRoute('mynotifications');
+      this.transitionToRoute('timelog');
     }
   }
 

@@ -14,11 +14,9 @@ Router.map(function() {
   this.route('usermanagement');
   this.route('actionitems');
   this.route('badges');
-  this.route('mynotifications');
   this.route('project', function() {
     this.route('viewproject',{path: '/:projectId'});
     });
-  
 });
 
 export default Router;
