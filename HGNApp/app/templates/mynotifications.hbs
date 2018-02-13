@@ -1,8 +1,10 @@
 <div class = "container">
 <div class = "row">
+    <div class="card-deck">
 {{#each model as |notification|}}
 
-        <div class = "col-sm-4">
+        <div class = "col-sm-12 col-md-4">
+        
 <div class="card mb-3 {{action-items-helper notification}} ">
      <h3 class="card-header">{{notification.eventType}}</h3>
    <div class="card-block">
@@ -13,6 +15,8 @@
 </div>
 </div>
 
+
 {{/each}}
+</div>
 </div>
 </div>
