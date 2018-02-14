@@ -3,10 +3,26 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     newactionitem : {},
     addnewactionitem : false,
-    DataService : Ember.inject.service('datastore-service'), 
+   // DataService : Ember.inject.service('datastore-service'), 
+
     forUser : "",
     newAIdescription : "",
     newdescription : "",
+
+    init(){
+
+        this._super(...arguments);
+
+        let user = this.get('loggedinUser');
+ 
+        
+        this.get('userProfileService').getTeamMembers(user)
+        .then(results => { this.set('teamMembers', results);})
+
+        this.get('DataService').getActionItems(user)
+        .then(results => { this.set('actionItems', results);})
+    },
+    
     
   
 

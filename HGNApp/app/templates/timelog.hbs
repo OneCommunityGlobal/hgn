@@ -2,12 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div class="col-md-12">
-      {{hgn-notifications notifications = notifications}}
-      </div>
-      <div class="col-md-12">
-        {{hgn-actionitems actionItems =actionItems teamMembers = teamMembers loggedinUser = loggedinUser }}
-      </div>
+     
+      {{hgn-notifications loggedinUser = loggedinUser}}     
+      
+        {{hgn-actionitems  loggedinUser = loggedinUser }}
+     
       <div class="col-md-12">
         <div class="panel">
         <button type="submit" id="addTimeToTask" type="button" class="btn btn-large btn-primary" {{action "toggleShow"}}>Add time to task</button>

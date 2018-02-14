@@ -2,12 +2,12 @@
 <div class="card card-outline-primary mb-3" >
   <div class="card-header">
    <h4 class="card-title ">
-      <a class = "accordion-toggle collapsed" data-toggle="collapse" data-target="#notifications" > Notifications  </a>
+      <a class = "accordion-toggle" data-toggle="collapse" data-target="#notifications" > Notifications  </a>
     </h4> 
       
   </div>
-  <div class="card-block collapse" id = "notifications">
-    <div class="list-group">
+  <div class="card-block collapse" id = "notifications" >
+    <div class="list-group" >
       {{#each notifications as |notification|}}
       <li class="list-group-item">{{notification.message}}
        <a href="#" class="pull-right" {{action "deleteNotification" notification}} data-toggle="tooltip" data-placement="right" title="Mark Notification As Read">

@@ -10,16 +10,9 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin,{
      
     let user = this.get('loggedinUser');
     controller.set('loggedinUser', this.loggedinUser);
-
-     this.get('DataService').getUnreadNotifications(user)
-     .then(results => { controller.set('notifications', results);});
-    
+  
      
-     this.get('userProfileService').getTeamMembers(user)
-        .then(results => { controller.set('teamMembers', results);})
-
-        this.get('DataService').getActionItems(user)
-        .then(results => { controller.set('actionItems', results);})
+  
    },
 
 

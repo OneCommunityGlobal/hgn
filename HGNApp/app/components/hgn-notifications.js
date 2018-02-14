@@ -2,7 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    DataService : Ember.inject.service('datastore-service'),
+    
+    willRender(){
+        this._super(...arguments);
+
+        let user = this.get('loggedinUser');
+        
+     this.get('DataService').getUnreadNotifications(user)
+     .then(results => { this.set('notifications', results);});
+    },
     
     actions:{
         deleteNotification(notification)
