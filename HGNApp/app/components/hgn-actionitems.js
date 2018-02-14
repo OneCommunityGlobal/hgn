@@ -6,7 +6,7 @@ export default Ember.Component.extend({
     DataService : Ember.inject.service('datastore-service'), 
     forUser : "",
     newAIdescription : "",
-    editedAIDescription : "",
+    newdescription : "",
     
   
 
@@ -23,13 +23,22 @@ export default Ember.Component.extend({
         },
 
         editActionItem(actionItem){
+            let editedactionitem = {};
 
-            this.get('DataService').editActionItem(actionItem)
+            editedactionitem._id = actionItem._id;
+            editedactionitem.description = this.get('newdescription');
+            editedactionitem.assignedTo = actionItem.assignedTo;
+            editedactionitem.createdBy = actionItem.createdBy;
+
+           
+            this.get('DataService').editActionItem(editedactionitem)
             
 
         }
         ,
         deleteActionItem(actionItem){
+
+       
 
             this.get('actionItems').removeObject(actionItem);
             this.get('DataService').deleteActionItem(actionItem);

@@ -1,8 +1,8 @@
 <div class = "col-xs-12">
 <div class="card card-outline-primary mb-3" >
   <div class="card-header">
-   <h4 class="card-title">Notifications
-      <a class = "pull-right" data-toggle="collapse" data-target="#notifications" > <span class = "glyphicon glyphicon-chevron-right" > </span> </a>
+   <h4 class="card-title ">
+      <a class = "accordion-toggle collapsed" data-toggle="collapse" data-target="#notifications" > Notifications  </a>
     </h4> 
       
   </div>
@@ -11,7 +11,7 @@
       {{#each notifications as |notification|}}
       <li class="list-group-item">{{notification.message}}
        <a href="#" class="pull-right" {{action "deleteNotification" notification}} data-toggle="tooltip" data-placement="right" title="Mark Notification As Read">
-      <span class = "glyphicon glyphicon-ok"></span>
+      <span class = "glyphicon glyphicon-remove-circle" style="color:black" ></span>
     </a>
     </li>
     

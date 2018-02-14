@@ -1,0 +1,149 @@
+<div class="container">
+  <form class="form-horizontal myprofile">
+    <div class=" form-group">
+      <div class="form-row">
+        <div class="col col-sm-8">
+          <div class=" row">
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="firstName">*First Name:</label>
+              <div class="col-sm-8">{{input class="form-control" name=firstName id = "firstName" type = "text" value = model.firstName }} {{display-errors
+                errors = errors.model.firstName showErrors= showErrors}} </div>
+            </div>
+
+          </div>
+          <div class=" row">
+            <div class="form-group">
+              <label class="control-label col-sm-4" for="lastName">*Last Name:</label>
+              <div class="col-sm-8">{{input class="form-control" name=lastName id = "lastName" type = "text" value = model.lastName }}</div>
+              {{display-errors errors = errors.model.lastName showErrors= showErrors}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="bio">*Bio:</label>
+              <div class="col-sm-10">{{textarea class="form-control" name=bio id = "bio" type = "text" value = model.bio }}</div>
+              {{display-errors errors = errors.model.bio showErrors= showErrors}}
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="role">*Role:</label>
+              <div class="col-sm-4">{{input class="form-control" name=role id = "role" type = "text" value = model.role readonly = (if isUserAdministrator
+                "undefined" "readonly")}}</div>
+              {{display-errors errors = errors.model.role showErrors= showErrors}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="email">*Email:</label>
+              <div class="col-sm-4">{{input class="form-control" name=email id = "email" type = "email" value = model.email readonly = (if isUserAdministrator
+                "undefined" "readonly")}}</div>
+              {{display-errors errors = errors.model.email showErrors= showErrors}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="weeklyComittedHours">*Weekly Comitted Hours:</label>
+              <div class="col-sm-4">{{input class="form-control" name=weeklyComittedHours id = "weeklyComittedHours" type = "text" value = model.weeklyComittedHours
+                readonly = (if isUserAdministrator "undefined" "readonly")}}</div>
+              {{display-errors errors = errors.model.weeklyComittedHours showErrors= showErrors}}
+            </div>
+          </div>
+          <div class="row">
+            {{#each model.personalLinks as |personallink|}}
+            <div class="form-group ">
+              <label class="control-label col-sm-4" this for="link">{{personallink.Name}}:</label>
+              <div class="col-sm-4">{{input class="form-control" name ="link" type = "text" value = personallink.Link readonly = "readonly" }}</div>
+              <span class="glyphicon glyphicon-minus col-sm-1 " {{action "removePersonalLink" personallink}}></span>
+
+            </div>
+            {{/each}}
+          </div>
+
+          <div class="row">
+            <div class="form-group  ">
+              <div class="form-inline">
+                <label class="control-label col-sm-4">New Personal Link:</label>
+                {{input model = this class = "form-control col-sm-2" value = newPersonalLink.Name placeholder = "Name"}} {{display-errors
+                errors = errors.newPersonalLink.Name showErrors= showFormErrors}} 
+                {{input model = this class="form-control  col-sm-6" value= newPersonalLink.Link type = "text" placeholder = "Link" }} 
+                {{display-errors errors = errors.newPersonalLink.Link showErrors= showFormErrors}}
+                <span class="glyphicon glyphicon-plus col-sm-1" {{action "addPersonalLink" }}></span>
+                <span class="glyphicon glyphicon-minus col-sm-1" {{action "CancelAddingPersonalLink" }}></span>
+
+              </div>
+              <br>
+            </div>
+          </div>
+
+          <div class="row">
+            {{#each model.adminLinks as |adminLink|}}
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="link">{{adminLink.Name}}:</label>
+              <div class="col-sm-4">{{input class="form-control" name=link type = "text" value = adminLink.Link readonly = (if isUserAdministrator
+                "undefined" "readonly") }}</div>
+              {{#if isUserAdministrator}}
+              <span class="glyphicon glyphicon-minus col-sm-1 " {{action "removeAdminLink" adminLink}}></span>
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
+
+          <div class="row">
+            {{#if isUserAdministrator}}
+            <div class="form-group  ">
+              <div class="form-inline">
+                <label class="control-label col-sm-4">New Admin Link:</label>
+                {{input class = "form-control col-sm-3" value = newAdminLink.Name placeholder = "Name"}} {{input class="form-control col-sm-6"
+                value= newAdminLink.Link type = "text" placeholder = "Link" }}
+                <span class="glyphicon glyphicon-plus col-sm-1" {{action "addAdminLink" }}></span>
+              </div>
+              <br>
+            </div>
+            {{/if}}
+          </div>
+
+          <div class="row">
+            <div class="form-group ">
+              <label class="control-label col-sm-4" for="team">*Team Membership:</label>
+              {{#each model.teamId as |team|}}
+              <div>
+                {{input class="form-control col-sm-offset-4 col-sm-2" name=team type = "text" value = team.teamName readonly = (if isUserAdministrator
+                "undefined" "readonly")}}
+              </div>
+              {{/each}}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col col-sm-3">
+          <img input id="image" type="image  " alt="Profile Picture" src={{model.profilePic}} name=p rofilePic class="img-responsive logo"
+          />
+<label for="newProfilePic" class = "btn btn-sm btn-info">Update My Image</label>
+          <input id = "newProfilePic" style="visibility:hidden" multiple="true" onchange={{action "updateProfilePic"}} accept="image/png,image/jpeg" name={{newProfilePic}} type="file"
+          />
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10 btn-group ">
+        <button type="button" class="btn btn-secondary">
+          <a href="/dashboard">Cancel</a>
+        </button>
+        <button type="button" class="btn btn-primary pull-right" {{action "postChanges"}}>Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{{userrole}} {{userId}} {{isUserAdministrator}}
