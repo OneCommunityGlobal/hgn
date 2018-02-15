@@ -29,12 +29,7 @@ export default Ember.Component.extend({
             let seconds =  (!!this.get('taskseconds'))? this.get('taskseconds') : "00";
 
             let timespent = hours + ":" + minutes + ":" + seconds;
-            let dateofWork =moment(this.get('dateofWork')).format('YYYY-MM-DD');
-            
-            
-
-
-
+            let dateofWork =moment(this.get('dateofWork')).format('YYYY-MM-DD');    
             timeentry.personId = this.get('loggedinUser.requestorId');
             timeentry.projectId = this.get('forprojectId');
             timeentry.taskId = this.get('fortaskId');
