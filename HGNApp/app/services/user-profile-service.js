@@ -40,5 +40,17 @@ export default Ember.Service.extend({
 
     let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
     return request;
+  },
+
+  getTeamMembers(user)
+  {
+    
+    let relativePath = "/userprofile/reportees/"+ user.requestorId;
+    let data = null;
+    let method = "get";
+
+    let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
+    return request;
   }
+
 });

@@ -1,5 +1,4 @@
 <div class="container">
-
     <div class="row">
     <div class="col-md-3" >
       <div class="col-md-12" >
@@ -11,7 +10,7 @@
 
       </div>
       <div class="col-md-12" >
-        <a href="/profile" style="text-decoration:none; color: black;">
+        <a href="/badges" style="text-decoration:none; color: black;">
           {{hgn-badges title="UserName" role=model.userSnapshot.role }}
         </a>
       </div>
@@ -21,7 +20,7 @@
         <div class="panel panel-default" style="height:350px;background-color:#C57CD2;text-align:center">
           <div class="panel-heading" style="background-color:#9957A5">Add Time</div>
           <div class="panel-body" >
-            {{hgn-timer}}
+            {{hgn-timer loggedinUser = loggedinUser}}
           </div>
         </div>
       </div>

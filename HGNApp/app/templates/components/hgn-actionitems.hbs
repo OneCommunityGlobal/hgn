@@ -1,0 +1,63 @@
+<div class="col-xs-12">
+  <div class="card card-outline-success mb-3 ">
+    <div class="card-header">
+      <h4 class="card-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-target="#showData">
+         Action Items
+        </a>
+      </h4>
+
+    </div>
+    <div class="card-block collapse" id="showData">
+
+ <div>
+ <select  class = "" onchange={{action (mut forUser) value="target.value"}}>
+      {{#each teamMembers as |teamMember|}}
+    <option value={{teamMember._id}} selected={{eq loggedinUser.requestorId teamMember._id}}>{{teamMember.name}} {{if (check-userisloggedin-user teamMember loggedinUser ) " (You)" ""}}</option>
+  {{/each}}
+</select>
+<button {{action "getActionItemsForUser"}} class = "pull-right btn-primary" >Show For Another User</button>
+</div>
+
+
+<div id = "actionItems" >
+
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col" class="col-sm-1">Created By</th>
+            <th scope="col" class="col-sm-6">Description</th>
+            <th scope="col" class="col-sm-1">Edit</th>
+            <th scope="col" class="col-sm-1">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each actionItems as |actionItem|}}
+          <tr>
+
+            <td class="col-sm-1">{{actionItem.createdBy}}</td>
+            <td class="col-sm-6"><input value = {{actionItem.description}} onchange ={{action (mut newdescription) value = "target.value" }}></td>
+            <td class="col-sm-1">
+              <span class="glyphicon glyphicon-floppy-disk" {{action "editActionItem" actionItem}}></span>
+            </td>
+            <td class="col-sm-1">
+              <span class="glyphicon glyphicon-remove-circle" {{action "deleteActionItem" actionItem}}></span>
+            </td>
+
+          </tr>
+          {{/each}}
+
+        </tbody>
+      </table>        
+    <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      {{input type="text" class="form-control" placeholder="Assign new action item" value = newAIdescription }}
+  </div>
+  <button type="submit" class="btn btn-primary mb-2" {{action "createActionItem"}}>Assign</button>
+</form>
+</div>
+
+
+    </div>
+  </div>
+</div>

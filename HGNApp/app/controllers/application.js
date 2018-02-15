@@ -8,8 +8,19 @@ export default Ember.Controller.extend({
   }),
 
   isUserAdministrator: Ember.computed('userrole', function () {
-    let userrole = this.get('userrole');  
+    let userrole = this.get('userrole');
     return userrole === "Administrator" ? true : false;
-  })
+  }),
+
+  actions: {
+
+
+    readNotification()
+    {
+      this.transitionToRoute('timelog');
+    }
+  }
+
+
 }
 );

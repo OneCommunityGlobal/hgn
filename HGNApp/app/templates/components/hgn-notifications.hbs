@@ -1,13 +1,25 @@
-{{yield}}
-
-<div class="panel panel-default" style="min-height:175px; max-height: 175px;">
-  <div class="panel-heading">
-    Notifications
+<div class = "col-xs-12">
+<div class="card card-outline-primary mb-3" >
+  <div class="card-header">
+   <h4 class="card-title ">
+      <a class = "accordion-toggle" data-toggle="collapse" data-target="#notifications" > Notifications  </a>
+    </h4> 
+      
   </div>
-  <div class="panel-body">
-{{#each model.Notifications as |notification|}}
-    <div style="border-bottom: solid 1px lightgrey"> {{notification.message}}</div>
+  <div class="card-block collapse" id = "notifications" >
+    <div class="list-groupss" >
+      {{#each notifications as |notification|}}
+      <li class="list-group-item">{{notification.message}}
+       <a href="#" class="pull-right" {{action "deleteNotification" notification}} data-toggle="tooltip" data-placement="right" title="Mark Notification As Read">
+      <span class = "glyphicon glyphicon-remove-circle" style="color:black" ></span>
+    </a>
+    </li>
+    
 {{/each}}
 
+    </div>
+
+
+</div>
 </div>
 </div>
