@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  this._super(...arguments);
- },
 
   projectService: Ember.inject.service('project-service'),
   isProjectDetail: false,
