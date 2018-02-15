@@ -29,18 +29,17 @@ export default Ember.Controller.extend({
     addNewProject() {
       this.get('model').addObject(this.get('newProject'));
       let project = this.get('newProject');
-      this.get('projectService').postProject(project)
-      .then(alert("saved"));
+      this.get('projectService').postProject(project);
       this.set('newProject', {});
     },
     destroyProject(project) {
       this.get('model').removeObject(project);
-      this.get('projectService').deleteProject(project)
-      .then(alert("deleted"));
+      this.get('projectService').deleteProject(project);
     },
-    editProject(project) {
-      this.get('projectService').editProjectData(project)
-      .then(alert("saved"));
+    postChanges() {
+      let projectId = this.get('projectId');
+      let project = this.get('model');
+      this.get('projectService').editProjectData(project, projectId);
     }
   }
 

@@ -1,0 +1,39 @@
+{{yield}}
+<button {{action 'toggleProjectDetail' }} class="list-group-item card-link">{{project.projectName}}
+<div class ="text-right">
+  <button class="btn" type="button"><span class="glyphicon glyphicon-edit"></span></button>
+</div>
+</button>
+
+{{#if isProjectDetail}}
+  <form class="form-horizontal margin-top">
+    <div class="form-group form-inline">
+      <label class="control-label" for="tasks">Tasks: </label>
+      {{#each project.tasks as |task|}}
+      <ul class="list-unstyled">
+        <li>
+          {{task.Description}}
+        <button class="btn" type="button" {{ action 'cancelTask' }}><span class="glyphicon glyphicon-minus"></span></button>
+      </li>
+    </ul>
+      {{/each}}
+      <span>{{input class="form-control required" type="text" value=task.Description }}</span>
+      <button class="btn" type="button" {{ action 'addNewTask' }}><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+    <div>
+      <label>active
+              <input type='radio' name='isActive' checked={{project.isActive}} onclick={{action (mut project.isActive) true}} />
+      </label>
+      <label>inactive
+              <input type='radio' name='isActive' checked={{project.isActive}} onclick={{action (mut project.isActive) false}} />
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary" {{ action 'postChanges' }} {{bind-attr disabled=disabled}}>Save</button>
+  </form>
+{{/if}}
+
+<style>
+.margin-top{
+  margin-top: 15px;
+}
+</style>

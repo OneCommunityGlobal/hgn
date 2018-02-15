@@ -38,12 +38,23 @@ export default Ember.Service.extend({
     return request;
   },
 
-  editProjectData(project) {
-    let relativePath = "/project";
+  editProjectData(project, projectId) {
+    let relativePath = "/project/"+ projectId;
     let data = project;
     let method = "put";
 
     let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
     return request;
   },
+
+  deleteProject(project)
+  {
+    let relativePath = "/project/";
+    let data = project;
+    let method = "delete";
+
+    let request = this.get('dataService').createEmberrequestObject(relativePath, data, method);
+    console.log(request);
+    return request;
+  }
 });

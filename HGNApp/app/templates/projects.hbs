@@ -1,3 +1,5 @@
+{{outlet}}
+
 <div class="container">
   <h2>Projects</h2>
   <button class="btn btn-primary" type="button" disabled= {{ isUserNotAdministrator }} data-toggle="modal" data-target="#newProjectModal"> <span class="glyphicon glyphicon-plus"></span>Add New Project</button>
@@ -13,7 +15,7 @@
         <div class="modal-body">
           <form class="form-horizontal">
             <div class="form-group form-inline">
-              <label class="control-label col-sm-2" for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=newProject.projectName }}
+              <label class="control-label col-sm-2" for="newProjectName">Project Name</label> {{input class="form-control required" id="newProjectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=newProject.projectName }}
             </div>
             <div class="form-group form-inline">
               <label class="control-label col-sm-2" for="tasks">Tasks: </label>
@@ -48,57 +50,11 @@
   <div class="card">
     <div class="card-block">
       <h4 class="card-title mb-2 text-muted list-group list-group-flush">
-        {{#each model as |project|}}
+        {{#each model as |projectItem|}}
           <ul class="list-unstyled">
             <li>
-            <!--   {{#link-to "project.viewproject" project._id }}{{/link-to}}-->{{project.projectName}}
-              <button class="btn" type="button" {{action 'editProject' project }} data-toggle="modal" data-target="#existingProjectModal"><span class="glyphicon glyphicon-edit"></span></button>
-              <!-- modal to edit an existing project -->
-              <div class="modal fade" id="existingProjectModal">
-                <div class="modal-dialog" role="dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5>Project Details</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                      <form class="form-horizontal">
-                        <div class="form-group form-inline">
-                          <label class="control-label col-sm-2" for="projectName">Project Name</label> {{input class="form-control required" id="projectName" type="text" placeholder="Enter project name" autofocus="autofocus" value=model.projectName }}
-                        </div>
-                        <div class="form-group form-inline">
-                          <label class="control-label col-sm-2" for="tasks">Tasks: </label>
-                          {{#each model.tasks as |task|}}
-                            {{task.Description}}
-                          <button class="btn" type="button" {{action 'cancelTask'}}><span class="glyphicon glyphicon-minus"></span></button>
-                          {{/each}}
-                          {{input class="form-control required" type="text" placeholder="Enter task" value=task.Description }}
-                          <button class="btn" type="button" {{action 'addNewTask'}}><span class="glyphicon glyphicon-plus"></span></button>
-                          <button class="btn" type="button" {{action 'cancelTask'}}><span class="glyphicon glyphicon-remove"></span></button>
-                        </div>
-                        <div>
-                          <label>active
-                            <input type='radio' name='isActive' checked={{model.isActive}} onclick={{action (mut model.isActive) true}} />
-                          </label>
-                          <label>inactive
-                            <input type='radio' name='isActive' checked={{model.isActive}} onclick={{action (mut model.isActive) false}} />
-                          </label>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary" {{action 'editProject'}} {{bind-attr disabled=disabled}} data-dismiss='modal'>Save</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                      </form>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-    <!--   modal ends to edit the existing project -->
-            <button class="btn" type="button" {{action 'destroyProject' project}}><span class="glyphicon glyphicon-remove"></span></button>
-            {{#each project.tasks as |task|}}
-              <p><small>{{task.Description}}</small></p>
-            {{/each}}
+              {{ project-detail project=projectItem}}
+          <!--    <button class="btn" type="button" {{action 'destroyProject' project}}><span class="glyphicon glyphicon-remove"></span></button> -->
           </li>
         </ul>
           {{/each}}
@@ -106,4 +62,3 @@
     </div>
   </div>
 </div>
-{{outlet}}
