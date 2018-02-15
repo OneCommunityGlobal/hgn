@@ -9,11 +9,8 @@ export default Ember.Route.extend(UnAuthenticatedRouteMixin,{
    setupController: function(controller, model){
      
     let user = this.get('loggedinUser');
-    controller.set('loggedinUser', this.loggedinUser);
-  
-     
-  
-   },
+    controller.set('loggedinUser', this.loggedinUser);  
+     },
 
 
 });

@@ -17,10 +17,10 @@ export default Ember.Component.extend({
  
         
         this.get('userProfileService').getTeamMembers(user)
-        .then(results => { this.set('teamMembers', results);})
+        .then(results => { this.set('teamMembers', results);});
 
         this.get('DataService').getActionItems(user)
-        .then(results => { this.set('actionItems', results);})
+        .then(results => { this.set('actionItems', results);});
     },
     
     
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
             this.get('DataService').getActionItems(requestor)
             .then(results => {
                 this.set('actionItems', results);
-            })
+            });
         },
 
         editActionItem(actionItem){
@@ -47,11 +47,10 @@ export default Ember.Component.extend({
             editedactionitem.createdBy = actionItem.createdBy;
 
            
-            this.get('DataService').editActionItem(editedactionitem)
+            this.get('DataService').editActionItem(editedactionitem);
             
 
-        }
-        ,
+        },        
         deleteActionItem(actionItem){
 
        

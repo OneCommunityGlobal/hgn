@@ -24,7 +24,7 @@
            <button type="submit" id="addTimeToTask" type="button" class="btn btn-large btn-primary" {{action "toggleShow"}}>Add time to task</button>
 
            {{#ember-wormhole to="destination"}}
-             {{hgn-model isVisible=showMyModal}}
+             {{hgn-model isVisible=showMyModal loggedinUser = loggedinUser}}
            {{/ember-wormhole}}
 
        </div>

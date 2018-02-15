@@ -8,19 +8,21 @@ export default Ember.Component.extend({
     taskhours : "",
     taskminutes : "",
     taskseconds : "",
+    
 
     init()
     {
         this._super(...arguments);
         let user = this.get('loggedinUser');
 
-        this.get('timeEntryService').getUserProjects(user)
-        .then(results => {this.set('projects', results)});
+         this.get('timeEntryService').getUserProjects(user)
+        .then(results => {this.set('projects', results);});
 
     },
 
     actions:{
         submitTimeEntry(){
+            let toastr = this.get('ToastorService');
 
             let timeentry = {};
             
@@ -37,7 +39,10 @@ export default Ember.Component.extend({
             timeentry.timeSpent = timespent;
             timeentry.notes = this.get('notes');
             this.get('timeEntryService').postTimeEntry(timeentry)
-            .then(alert("saved"));
+            .then(results => {
+                toastr.success(results, 'Time Entry Saved');
+            }, error => {toastr.warning('Error!!', error);})
+           
 
 
         }
