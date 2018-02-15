@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     
-    willRender(){
+    init(){
         this._super(...arguments);
 
         let user = this.get('loggedinUser');

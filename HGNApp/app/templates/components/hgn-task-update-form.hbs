@@ -1,17 +1,31 @@
-<div class="task-update">
+<div class="col-xs-12">
+  <div class="card card-outline-success mb-3 ">
+    <div class="card-header">
+      <h4 class="card-title">
+        <a class="accordion-toggle" data-toggle="collapse" data-target="#showTimeEntryForm">
+        Add Time To Task
+        </a>
+      </h4>
 
+    </div>
+    <div class="card-block collapse" id="showTimeEntryForm">
 
-  <label>Total Time worked</label>
+<label>
+  Date Of Work:
+  {{pikaday-input format="MM/DD/YYYY" onSelection=(action (mut dateofWork ) value= target.value)}}
+</label>
+
+        <label>Total Time worked</label>
   <table>
     <tr>
       <td>
-        {{super-number id="hours_input" min=0 max=23 loop=true value=1}}
+        {{super-number id="hours_input" min=0 max=23 loop=true  value = taskhours }}
       </td>
       <td>
-        {{super-number id="minutes_input" value=0 loop=true min=0 max=59 loop=true}}
+        {{super-number id="minutes_input"  loop=true min=0 max=59 loop=true value = taskminutes}}
       </td>
       <td>
-        {{super-number id="standard_seconds" value=0 min=0 max=59 loop=true}}
+        {{super-number id="standard_seconds"  min=0 max=59 loop=true value = taskseconds}}
       </td>
     </tr>
     <tr style="text-align:center">
@@ -26,35 +40,48 @@
       </td>
     </tr>
   </table>
-
-  <hr>
-
-  <label> Select Project </label>
-  <select class="form-control" id="sel1">
-    <option>Food Programme</option>
-    <option>Software Development</option>
-    <option>Real Estate</option>
-  </select>
-
-  <hr>
-
-  <label> Select Task </label>
-  <select class="form-control" id="sel1">
-    <option>Task 1</option>
-    <option>Task 2</option>
-    <option>Task 3</option>
-    <option>Task 4</option>
-  </select>
-
-
-  <hr>
-
-  <label> Description </label>
-
-
-  {{hgn-editor}}
-
-
 <hr>
+   <div class = "form-group">
+   <label> Select Project </label>
 
+   <select  class = "form-control" onchange={{action (mut forprojectId) value="target.value"}}>
+      {{#each projects as |project|}}
+      {{#if project.projectId}}
+    <option value={{project.projectId}} >{{project.projectName}}</option>
+    {{/if}}
+  {{/each}}
+  </select>
+  </div>
+<hr>
+   <div class = "form-group">
+      <label> Select Task </label>
+       {{#each projects as |project|}}
+       {{#if (eq project.projectId forprojectId )}}
+    <select  class = "form-control" onchange={{action (mut fortaskId) value="target.value"}}>    
+      
+      {{#each project.tasks as |task|}}
+      <option value={{task._id}}>{{task.Description}}</option>
+      {{/each}}
+        </select>
+    {{/if}}
+  {{/each}}
+
+  </div>
+
+  <div class = "form-group" >
+     <label> Notes </label>
+     <input onchange= {{action (mut notes) value="target.value" }}/>
+  </div>
+
+  <button class = "btn btn-primary btn-sm" {{action "submitTimeEntry"}}>Submit</button>
+
+
+
+
+
+
+
+
+    </div>
+  </div>
 </div>

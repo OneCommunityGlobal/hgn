@@ -35,6 +35,7 @@
     "ember-cli-htmlbars": "^1.0.3",
     "ember-cli-htmlbars-inline-precompile": "^0.4",
     "ember-cli-inject-live-reload": "^1.4.0",
+    "ember-cli-moment-shim": "^3.5.0",
     "ember-cli-qunit": "^1.4.0",
     "ember-cli-release": "0.2.8",
     "ember-cli-sri": "^2.1.0",
@@ -54,9 +55,11 @@
     "ember-cli-super-number": "^0.1.0",
     "ember-cli-test-loader": "^2.2.0",
     "ember-jwt-decode": "^0.1.0",
+    "ember-pikaday": "^2.2.4",
     "ember-radio-buttons": "^4.1.0",
     "ember-truth-helpers": "^2.0.0",
     "ember-validations": "^2.0.0-alpha.5",
+    "moment": "^2.20.1",
     "package.json": "^2.0.1"
   }
 }
