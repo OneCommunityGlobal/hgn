@@ -40,8 +40,11 @@ export default Ember.Component.extend({
             timeentry.notes = this.get('notes');
             this.get('timeEntryService').postTimeEntry(timeentry)
             .then(results => {
-                toastr.success(results, 'Time Entry Saved');
-            }, error => {toastr.warning('Error!!', error);})
+                console.log(results)
+                toastr.success("", 'Time Entry Saved');
+            }, error => {
+                console.log(error);
+                toastr.warning(error.responseJSON.message,'Error!!' );});
            
 
 
