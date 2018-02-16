@@ -29,7 +29,7 @@
           <div class="panel-heading" style="font: bold; color: #FDFEFE;background-color: #DC7633">Leaderboard</div>
           <div class="panel-body" style="padding:0px">
             {{hgn-tabs data=model.leaderboard}}
-            <!-- {{hgn-tabs model=model.LeaderboardWeekData data="hi"}} -->
+            
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <a href="/timelog" style="text-decoration:none; color: black;">
           <div class="panel-heading" style="background-color:#B14E4E">Hours Worked this week</div>
           <div class="panel-body" >
-              {{ember-chart type='Pie' options=model.weekData.chartOptions data=model.weekData.chartData width=200 height=200 legend=true}}
+              {{ember-chart type='doughnut'  data=hoursthisweek options= pieChartOptions animate=true}}
           </div>
           </a>
         </div>
@@ -49,8 +49,8 @@
           <a href="/timelog" style="text-decoration:none; color: black;">
           <div class="panel-heading" style="background-color:#7AA243">Hours Worked this month (Projects)</div>
           <div class="panel-body">
-            {{ember-chart type='Bar' options=model.monthData.chartOptions data=model.monthData.chartData width=300 height=250 legend=true}}
-          </div>
+            {{ember-chart type='bar'  data=hoursthismonth options = baroptions }}
+            </div>
           </a>
         </div>
       </div>

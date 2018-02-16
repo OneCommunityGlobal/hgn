@@ -104,7 +104,7 @@ export default Ember.Mixin.create({
   createYAxisElement: function() {
     let svg = this.get('chartSVG');
     var scale = this.get('yScale');
-    var ticks = 6;
+    var ticks = 1;
     //let width = this.get('chartWidth');
 
     var minMax = scale.domain();
