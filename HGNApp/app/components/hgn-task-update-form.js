@@ -8,6 +8,7 @@ export default Ember.Component.extend({
     taskhours : "",
     taskminutes : "",
     taskseconds : "",
+    isTangible: true,
     
 
     init()
@@ -37,6 +38,7 @@ export default Ember.Component.extend({
             timeentry.taskId = this.get('fortaskId');
             timeentry.dateofWork = dateofWork;
             timeentry.timeSpent = timespent;
+            timeentry.isTangible = this.get('isTangible');
             timeentry.notes = this.get('notes');
             this.get('timeEntryService').postTimeEntry(timeentry)
             .then(results => {

@@ -40,11 +40,12 @@
       </td>
     </tr>
   </table>
-<hr>
+
    <div class = "form-group">
    <label> Select Project </label>
 
-   <select  class = "form-control" onchange={{action (mut forprojectId) value="target.value"}}>
+   <select  class = "form-control form-control-lg" onchange={{action (mut forprojectId) value="target.value"}}>
+      <option value = "" disabled selected>Select Project</option>
       {{#each projects as |project|}}
       {{#if project.projectId}}
     <option value={{project.projectId}} >{{project.projectName}}</option>
@@ -52,13 +53,14 @@
   {{/each}}
   </select>
   </div>
-<hr>
-   <div class = "form-group">
+
+  <form>
+     <div class = "form-group">
       <label> Select Task </label>
        {{#each projects as |project|}}
        {{#if (eq project.projectId forprojectId )}}
-    <select  class = "form-control" onchange={{action (mut fortaskId) value="target.value"}}>    
-      
+    <select  class = "form-control form-control-lg" onchange={{action (mut fortaskId) value="target.value"}}>    
+       <option disabled selected >Select Task</option>
       {{#each project.tasks as |task|}}
       <option value={{task._id}}>{{task.Description}}</option>
       {{/each}}
@@ -73,15 +75,23 @@
      <input onchange= {{action (mut notes) value="target.value" }}/>
   </div>
 
-  <button class = "btn btn-primary btn-sm" {{action "submitTimeEntry"}}>Submit</button>
+   <div class="form-group">
+     <div class="form-check form-check-inline">
+  <input class="form-check-input" name = "timeentrytypeoptions" type="radio"  onchange={{action (mut isTangible) "true"}} checked>
+  <label class="form-check-label">
+    Tangible Work
+  </label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" name = "timeentrytypeoptions" type="radio" onchange={{action (mut isTangible) "false"}}>
+  <label class="form-check-label" >
+    Intangible Work
+  </label>
+</div>
+   </div>
 
-
-
-
-
-
-
-
+  <button type = "submit" class = "btn btn-primary btn-sm" {{action "submitTimeEntry"}}>Submit</button>
+  </form>
     </div>
   </div>
 </div>
