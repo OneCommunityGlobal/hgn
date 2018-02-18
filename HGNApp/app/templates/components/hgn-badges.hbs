@@ -1,6 +1,24 @@
-<div class="panel" style="width:270px;height:350px;padding:0px;background-color:#DA9962">
+<style>
+
+  .image-badge{
+    display: inline-block;
+    height: 80px;
+    width: 120px;
+  }
+
+</style>
+
+<div class="panel" style="width:270px;height:350px;padding:0px;background-color:#DA9962; overflow-y: scroll">
   <div class="panel-heading" style="background-color:#C1702A">Badges</div>
   <div class="panel-body" style="padding:0px;">
-      <img src="/assets/images/badges/2x_burned.png"  height="80">
+    <span class="image-body">
+      {{!-- {{#link-to "badges"}} --}}
+      <img src="/assets/images/badges/2x_burned.png" class="image-badge" alt="" title="FIRST BADGE">
+      {{!-- {{/link-to}} --}}
+    </span>
+    <span class="image-body">
+      <img src="/assets/images/badges/2x_burned.png" class="image-badge" alt="" title="SECOND BADGE">
+    </span>
   </div>
 </div>{{yield}}
+
