@@ -1,0 +1,10 @@
+<div class="panel panel-default" style="height:350px;background-color:#CC7272;text-align:center">
+  <a href="/timelog" style="text-decoration:none; color: black;">
+    <div class="panel-heading" style="background-color:#B14E4E">Hours Worked this week</div>
+    <div class="panel-body">
+      {{ember-chart type='doughnut' data=hoursthisweek options= pieChartOptions animate=true}}
+    </div>
+  </a>
+</div>
+
+{{yield}}

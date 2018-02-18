@@ -39,20 +39,10 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="panel panel-default" style="height:350px;background-color:#CC7272;text-align:center">
-        <div class="panel-heading" style="background-color:#B14E4E">Hours Worked this week</div>
-        <div class="panel-body" >
-          {{!-- {{ember-chart type='Pie' options=model.weekData.chartOptions data=model.weekData.chartData width=200 height=200 legend=true}} --}}
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default" style="height:350px;background-color:#A9D96C;text-align:center">
-        <div class="panel-heading" style="background-color:#7AA243">Hours Worked this month (Projects)</div>
-        <div class="panel-body">
-          {{!-- {{ember-chart type='Bar' options=model.monthData.chartOptions data=model.monthData.chartData width=300 height=250 legend=true}} --}}
-        </div>
-      </div>
+     {{weekly-effort-chart loggedinUser = loggedinUser}}
+
+    
+      {{monthly-effort-chart loggedinUser = loggedinUser}}
     </div>
   </div>
 

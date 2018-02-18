@@ -4,21 +4,7 @@ import ENV from '../config/environment';
 
 export default Ember.Service.extend({
 
-  self: this,
-
-      getDashboardData(requestor) {
-
-
-        let relativePath =  "/dashboard/" + requestor.requestorId;
-
-        let data = null;
-        let method = "get";
-
-    let request = this.createEmberrequestObject(relativePath, data, method);
-    return request;
-
-
-  },
+  self: this,    
 
 
 
