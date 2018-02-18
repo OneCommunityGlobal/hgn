@@ -48,7 +48,12 @@ export default Ember.Component.extend({
                         ticks: {
                             beginAtZero:true
                         }
-                    }]
+                    }],
+                    xAxes: [{
+                        ticks: {
+                        autoSkip: false
+                        }
+                        }]
                 },
                 legend: {
                     display: true,
