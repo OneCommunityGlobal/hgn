@@ -34,8 +34,10 @@
         </li>
      
         <li class="nav-item navbar-text">
+           <a class = "nav-link" href = "/timelog">
            <span class="glyphicon glyphicon-bell"></span>
-            <span class="badge badge-notify" {{action "readNotification"}}>{{notifications.length}}</span>        
+            <span class="badge badge-notify">{{notifications.length}}</span>
+            </a>     
         </li>
 
         <li class="nav-item navbar-text">
@@ -44,7 +46,7 @@
           </a>
         </li>
         <li class="nav-item navbar-text">
-          <a class="nav-link" {{action 'logout'}}>Logout</a>
+          <a class="nav-link" {{action 'logout'}} href= "/login">Logout</a>
         </li>
       </ul>
     </div>

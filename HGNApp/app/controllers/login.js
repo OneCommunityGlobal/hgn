@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
         "password": password
       };
 
+      
       let loginPromise = this.get('AuthService').login(logindata);
 
       loginPromise
@@ -22,11 +23,7 @@ export default Ember.Controller.extend({
           localStorage.setItem(ENV.TOKEN_KEY, result);
             self.transitionToRoute('dashboard');
         });
-        // .fail(
-        //   function () {
-        //     self.transitionToRoute('login');
-        //   }
-        // );
+       
     }
   }
 

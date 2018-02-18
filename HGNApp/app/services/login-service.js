@@ -21,8 +21,10 @@ export default Ember.Service.extend({
 
   isAuthenticated()
   {
+  
     if(!localStorage.getItem(ENV.TOKEN_KEY))
     {
+     
       return false;
     }     
     let token = localStorage.getItem(ENV.TOKEN_KEY);   
@@ -31,6 +33,7 @@ export default Ember.Service.extend({
   },
   logout()
   {
+   
     localStorage.removeItem(ENV.TOKEN_KEY);
   },
 
