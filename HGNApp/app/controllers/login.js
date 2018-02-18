@@ -22,7 +22,10 @@ export default Ember.Controller.extend({
          .done(function (result) {
           localStorage.setItem(ENV.TOKEN_KEY, result);
             self.transitionToRoute('dashboard');
-        });
+        })
+        .error(function(error){
+          alert("Invalid credentials");
+        })
        
     }
   }
